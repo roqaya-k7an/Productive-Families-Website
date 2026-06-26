@@ -106,7 +106,7 @@ $proid=$_SESSION['proid'];
                 <!-- Text based logo -->
                 <a href="index.html">
                   <span class="fa fa-shopping-cart"></span>
-                  <p>Prodcutive <strong>families</strong> <span>at your service</span></p>
+                  <p>Productive <strong>families</strong> <span>at your service</span></p>
                 </a>
                 <!-- img based logo -->
                 <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
@@ -259,7 +259,7 @@ $proid=$_SESSION['proid'];
                     <input type="text" placeholder="name" name="name">
                      <label for="">Price<span>*</span></label>
                     <input type="text" placeholder="Price" name="price">
-                     <label for="">discribe<span>*</span></label>
+                     <label for="">Description<span>*</span></label>
                                   
                      <div class="form-group">                        
                       <textarea class="form-control" rows="3" name="summary" placeholder="summary"></textarea>

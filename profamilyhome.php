@@ -103,7 +103,7 @@ session_start();
                 <!-- Text based logo -->
                 <a href="index.html">
                   <span class="fa fa-shopping-cart"></span>
-                  <p>Prodcutive <strong>Families</strong> <span>at your service</span></p>
+                  <p>Productive <strong>Families</strong> <span>at your service</span></p>
                 </a>
                 <!-- img based logo -->
                 <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
@@ -358,7 +358,7 @@ while($row = mysqli_fetch_array( $result )) {
                       <div class="panel-heading">
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree1">
-                           Incomming Requests
+                           Incoming Requests
                           </a>
                         </h4>
                       </div>

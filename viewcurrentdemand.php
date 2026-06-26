@@ -104,7 +104,7 @@ $proid=$_SESSION['proid'];
                 <!-- Text based logo -->
                 <a href="index.html">
                   <span class="fa fa-shopping-cart"></span>
-                  <p>Prodcutive <strong>Families</strong> <span>at your service</span></p>
+                  <p>Productive <strong>Families</strong> <span>at your service</span></p>
                 </a>
                 <!-- img based logo -->
                 <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->

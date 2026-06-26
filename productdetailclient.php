@@ -100,7 +100,7 @@
                 <!-- Text based logo -->
                 <a href="index.html">
                   <span class="fa fa-shopping-cart"></span>
-                  <p>Prodcutive <strong>families</strong> <span>at your service</span></p>
+                  <p>Productive <strong>families</strong> <span>at your service</span></p>
                 </a>
                 <!-- img based logo -->
                 <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
@@ -264,7 +264,7 @@ while($row = mysqli_fetch_array( $result1 )) {
             </div>
             <div class="aa-product-details-bottom">
               <ul class="nav nav-tabs" id="myTab2">
-                <li><a href="#description" data-toggle="tab">Discribe</a></li>
+                <li><a href="#description" data-toggle="tab">Description</a></li>
                                
               </ul>
           <!-- Tab panes -->

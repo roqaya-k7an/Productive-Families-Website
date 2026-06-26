@@ -104,7 +104,7 @@ $proid=$_SESSION['proid'];
                 <!-- Text based logo -->
                 <a href="index.html">
                   <span class="fa fa-shopping-cart"></span>
-                  <p>Prodcutive <strong>Families</strong> <span>at your service</span></p>
+                  <p>Productive <strong>Families</strong> <span>at your service</span></p>
                 </a>
                 <!-- img based logo -->
                 <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
@@ -226,7 +226,7 @@ while($row = mysqli_fetch_array( $result )) {
                     <input type="text" value="<?php echo htmlentities($row['productname']);?>" placeholder="name" name="name">
                      <label for="">Price<span>*</span></label>
                     <input type="text" value="<?php echo htmlentities($row['price']);?>" placeholder="Price" name="price">
-                     <label for="">discribe<span>*</span></label>
+                     <label for="">Description<span>*</span></label>
                                   
                      <div class="form-group">                        
                       <textarea class="form-control" rows="3" name="summary" placeholder="summary"><?php echo htmlentities($row['discribe']);?></textarea>
