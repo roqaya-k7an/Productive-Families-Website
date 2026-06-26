@@ -1,21 +1,18 @@
-# PHP + Apache image for running the Productive Families website on Railway
-FROM php:8.2-apache
+# PHP image for running the Productive Families website on Railway
+FROM php:8.2-cli
 
 # MySQL support (mysqli) used by the app
-RUN docker-php-ext-install mysqli \
-    && a2enmod rewrite
+RUN docker-php-ext-install mysqli
 
-# Copy the website into Apache's web root
-COPY . /var/www/html/
+WORKDIR /var/www/html
+COPY . /var/www/html
 
-# Railway provides the port to listen on via the $PORT variable.
-# This start script points Apache at that port, then runs Apache.
-RUN printf '#!/bin/sh\n\
-PORT="${PORT:-80}"\n\
-sed -i "s/Listen 80/Listen ${PORT}/" /etc/apache2/ports.conf\n\
-sed -i "s/:80>/:${PORT}>/" /etc/apache2/sites-available/000-default.conf\n\
-exec apache2-foreground\n' > /usr/local/bin/start.sh \
-    && chmod +x /usr/local/bin/start.sh
+# Allow reasonably sized product-image uploads
+RUN { \
+      echo "upload_max_filesize=20M"; \
+      echo "post_max_size=22M"; \
+    } > /usr/local/etc/php/conf.d/uploads.ini
 
-EXPOSE 80
-CMD ["/usr/local/bin/start.sh"]
+# Railway provides the public port via $PORT.
+# PHP's built-in web server serves the site on that port.
+CMD ["sh", "-c", "php -S 0.0.0.0:${PORT:-8080} -t /var/www/html"]

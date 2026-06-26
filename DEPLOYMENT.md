@@ -45,7 +45,14 @@ Open:
 ```
 https://your-app.up.railway.app/index.php
 ```
-Sample admin login → **username:** `admin` · **password:** `12345678`
+Sample logins from the imported data:
+
+| Role | Username | Password |
+| :--- | :--- | :--- |
+| Admin | `admin` | `123456` |
+| Productive Family | `manal` | `12345678` |
+| Client | `khaled` | `123456` |
+| Delivery Agent | `mohamed` | `123456` |
 
 ---
 

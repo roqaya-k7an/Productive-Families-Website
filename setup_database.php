@@ -34,7 +34,7 @@ if (mysqli_multi_query($con, $sql)) {
     if (mysqli_errno($con) === 0) {
         echo "<p style='color:green;font-weight:bold'>✅ Done! Tables created and sample data inserted.</p>";
         echo "<p>You can now open <a href='index.php'>the website</a>.</p>";
-        echo "<p>Sample admin login &rarr; username: <b>admin</b> &nbsp; password: <b>12345678</b></p>";
+        echo "<p>Sample admin login &rarr; username: <b>admin</b> &nbsp; password: <b>123456</b></p>";
         echo "<p style='color:#888'>For tidiness you may delete this file (setup_database.php).</p>";
     } else {
         echo "<p style='color:orange'>Finished with a notice: " . htmlspecialchars(mysqli_error($con)) . "</p>";

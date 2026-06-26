@@ -13,6 +13,10 @@
  |
  */
 
+// This project was written for PHP 7.4. Keep the old (non-throwing) mysqli
+// behaviour so it runs the same way on modern PHP 8 servers.
+mysqli_report(MYSQLI_REPORT_OFF);
+
 $DB_HOST = getenv('MYSQLHOST')     ?: getenv('DB_HOST') ?: 'localhost';
 $DB_USER = getenv('MYSQLUSER')     ?: getenv('DB_USER') ?: 'root';
 $DB_PASS = getenv('MYSQLPASSWORD') ?: getenv('DB_PASS') ?: '';
