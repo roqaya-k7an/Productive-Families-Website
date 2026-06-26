@@ -14,6 +14,11 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/🏆%20First%20Place-Girls'%20Branch%20Graduation%20Projects-FFD700?style=for-the-badge&labelColor=B8860B" alt="First Place Award">
+</p>
+
+<p align="center">
+  <strong>🥇 Awarded First Place among the girls' branch graduation projects</strong><br>
   <strong>🎓 Graduation Project — Bachelor of Science in Computer Science</strong><br>
   Northern Border University · College of Science · Arar, Kingdom of Saudi Arabia<br>
   <strong>Second Semester · 2020–2021</strong>
