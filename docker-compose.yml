@@ -1,0 +1,30 @@
+# Run the whole project locally with ONE command:
+#     docker compose up --build
+#
+# Then open  http://localhost:8080/index.php
+# (in a Codespace, open the forwarded port 8080).
+#
+# The database is created and filled from profamily.sql automatically.
+
+services:
+  db:
+    image: mariadb:10.11
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: profamily
+    volumes:
+      - ./profamily.sql:/docker-entrypoint-initdb.d/profamily.sql:ro
+
+  web:
+    build: .
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASS: root
+      DB_NAME: profamily
+      DB_PORT: "3306"
+      PORT: "8080"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db

@@ -5,3 +5,4 @@ docs
 .gitignore
 .sass-cache
 profamily.rar
+docker-compose.yml
