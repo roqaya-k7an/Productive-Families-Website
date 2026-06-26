@@ -1,23 +1,25 @@
 <?php
 /*
  |--------------------------------------------------------------------------
- | Database connection settings
+ | Database connection
  |--------------------------------------------------------------------------
  |
- | LOCAL (XAMPP) values are filled in below and work out of the box.
+ | Works in three places automatically:
+ |   • Local XAMPP        -> uses localhost / root / profamily (defaults below)
+ |   • Railway (online)   -> automatically reads Railway's MySQL variables
+ |   • Any other host     -> set DB_HOST / DB_USER / DB_PASS / DB_NAME env vars
  |
- | To put the site ONLINE on a free host (e.g. InfinityFree), just replace
- | the four values with the database details your host gives you, then save.
- | Nothing else in the project needs to change.
+ | You normally do NOT need to edit this file.
  |
  */
 
-$DB_HOST = 'localhost';    // ONLINE: e.g.  sqlXXX.infinityfree.com
-$DB_USER = 'root';         // ONLINE: e.g.  if0_XXXXXXXX
-$DB_PASS = '';             // ONLINE: your database password
-$DB_NAME = 'profamily';    // ONLINE: e.g.  if0_XXXXXXXX_profamily
+$DB_HOST = getenv('MYSQLHOST')     ?: getenv('DB_HOST') ?: 'localhost';
+$DB_USER = getenv('MYSQLUSER')     ?: getenv('DB_USER') ?: 'root';
+$DB_PASS = getenv('MYSQLPASSWORD') ?: getenv('DB_PASS') ?: '';
+$DB_NAME = getenv('MYSQLDATABASE') ?: getenv('DB_NAME') ?: 'profamily';
+$DB_PORT = (int)(getenv('MYSQLPORT') ?: getenv('DB_PORT') ?: 3306);
 
-$con = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+$con = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $DB_PORT);
 
 // Check connection
 if (mysqli_connect_errno()) {

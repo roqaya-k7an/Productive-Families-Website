@@ -1,70 +1,66 @@
-# 🚀 Putting the Website Online (Free Hosting Guide)
+# 🚀 Run the Website Live on Railway
 
-This website uses **PHP + MySQL**, so it needs a host that supports them.
-**GitHub Pages cannot run it** — use a free PHP host like
-**[InfinityFree](https://infinityfree.com)** (free, no credit card, supports PHP & MySQL).
+This project is **PHP + MySQL**, so it needs a host that runs PHP and a database.
+**[Railway](https://railway.app)** does exactly that (the same place your other live
+project runs) and gives you a public link like `https://your-app.up.railway.app`.
 
-Follow these steps once and your site will be live at a public link.
+Everything technical is already prepared in this repo (a `Dockerfile`, an
+environment-aware `config.php`, and a one-click `setup_database.php`). You only need
+to click through Railway.
 
 ---
 
-## Step 1 — Create a free hosting account
-1. Go to **https://infinityfree.com** and click **Sign Up** (use your email).
-2. After logging in, click **Create Account**.
-3. Choose a free subdomain (e.g. `profamily.infinityfreeapp.com`) or use your own domain.
-4. Wait a few minutes until the account status becomes **Active**.
+## Step 1 — Create the project from GitHub
+1. Go to **https://railway.app** and log in with your **GitHub** account.
+2. Click **New Project → Deploy from GitHub repo**.
+3. Choose **`roqaya-k7an/Productive-Families-Website`**.
+4. Railway detects the `Dockerfile` and starts building automatically. ✅
 
-## Step 2 — Create the database
-1. In the control panel (**Control Panel → MySQL Databases**), create a new database.
-2. Write down the four values it shows you:
-   - **Database host** (e.g. `sqlXXX.infinityfree.com`)
-   - **Database name** (e.g. `if0_12345678_profamily`)
-   - **Database user** (e.g. `if0_12345678`)
-   - **Database password** (the one you set when signing up)
+## Step 2 — Add a MySQL database
+1. Inside the project, click **New → Database → Add MySQL**.
+2. Railway creates a MySQL service with all its connection details.
 
-## Step 3 — Import the data
-1. Next to your database, click **Admin (phpMyAdmin)**.
-2. Click the **Import** tab.
-3. Choose the file **`profamily.sql`** from this project and click **Go**.
-   - This creates all the tables (admin, client, profamily, product, cart, …) with the sample data.
+## Step 3 — Connect the website to the database
+1. Click your **website service** → **Variables** tab → **New Variable → Add Reference**.
+2. Add these four references from the MySQL service:
+   `MYSQLHOST`, `MYSQLPORT`, `MYSQLUSER`, `MYSQLPASSWORD`, `MYSQLDATABASE`.
+   *(Railway often offers “Add all” for the database — that's the easiest.)*
+3. The site will redeploy automatically.
 
-## Step 4 — Tell the site about the database
-1. Open **`config.php`** and replace the four values at the top with the ones from Step 2:
-   ```php
-   $DB_HOST = 'sqlXXX.infinityfree.com';
-   $DB_USER = 'if0_12345678';
-   $DB_PASS = 'your-password';
-   $DB_NAME = 'if0_12345678_profamily';
+> `config.php` already reads these variables on its own — no editing needed.
+
+## Step 4 — Get your public link
+1. Click the **website service → Settings → Networking → Generate Domain**.
+2. You now have a link like **`https://your-app.up.railway.app`**.
+
+## Step 5 — Create the tables (one click)
+1. Open this once in your browser:
    ```
-2. Save the file.
+   https://your-app.up.railway.app/setup_database.php
+   ```
+2. It will say **“✅ Done! Tables created and sample data inserted.”**
 
-## Step 5 — Upload the website files
-1. In the control panel, open **Online File Manager** (or use FTP).
-2. Go into the **`htdocs`** folder.
-3. Upload **all** the project files and folders **except** `docs/`, `README.md`,
-   `DEPLOYMENT.md` and `profamily.sql` (those are not part of the running site).
-   - Easiest way: upload the ready-made **`profamily-site.zip`** and use the file
-     manager's **Extract** option.
-
-## Step 6 — Open your live site 🎉
-Visit your subdomain, for example:
+## Step 6 — Use your live website 🎉
+Open:
 ```
-https://profamily.infinityfreeapp.com/index.php
+https://your-app.up.railway.app/index.php
 ```
-Log in with the sample admin account from the database:
-- **Role:** Admin · **Username:** `admin` · **Password:** `12345678`
+Sample admin login → **username:** `admin` · **password:** `12345678`
 
 ---
 
-## 💻 Prefer to run it on your own computer instead?
-1. Install **[XAMPP](https://www.apachefriends.org/)** and start **Apache** + **MySQL**.
+## 💻 Run it locally instead (XAMPP)
+1. Install **[XAMPP](https://www.apachefriends.org/)**, start **Apache + MySQL**.
 2. Copy this project into the XAMPP **`htdocs`** folder.
-3. Open **http://localhost/phpmyadmin**, create a database named **`profamily`**, and
-   **Import** `profamily.sql`.
-4. Leave `config.php` with its default local values.
-5. Open **http://localhost/Productive-Families-Website/index.php**.
+3. Open **http://localhost/phpmyadmin**, create a database **`profamily`**, and **Import** `profamily.sql`.
+4. Open **http://localhost/Productive-Families-Website/index.php**.
 
 ---
 
-> ℹ️ This is a student graduation project. Passwords are stored in plain text for
-> demonstration purposes only — not suitable for real production use.
+### Notes
+- Uploaded product images are stored on the server's disk. On Railway the disk resets on
+  each redeploy, so newly uploaded images may disappear after a redeploy (the sample
+  images in the repo always stay). Add a Railway **Volume** mounted at `/var/www/html/img`
+  if you want uploads to persist.
+- This is a student graduation project; passwords are stored in plain text for
+  demonstration only.
