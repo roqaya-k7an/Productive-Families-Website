@@ -25,7 +25,7 @@
 </p>
 
 <p align="center">
-  <a href="https://roqaya-k7an.github.io/Productive-Families-Website/"><strong>🌐 View the Live Project Showcase »</strong></a>
+  <a href="https://productive-families-website-production.up.railway.app"><strong>🌐 View the Live Website »</strong></a>
 </p>
 
 ---
@@ -143,9 +143,9 @@ This is a PHP + MySQL application, so it needs a local server such as **XAMPP**.
    http://localhost/Productive-Families-Website/index.php
    ```
 
-> 💡 The [live link](https://roqaya-k7an.github.io/Productive-Families-Website/) is a static
-> showcase of the project. The full interactive system requires a PHP server (XAMPP) as
-> described above.
+> 💡 The project is also deployed live at
+> **[productive-families-website-production.up.railway.app](https://productive-families-website-production.up.railway.app)**
+> (PHP + MySQL on Railway). You can run it locally with XAMPP as described above.
 
 ---
 
@@ -153,9 +153,9 @@ This is a PHP + MySQL application, so it needs a local server such as **XAMPP**.
 
 | Name | University ID | Role |
 | :--- | :---: | :--- |
-| **Roqaya Mohammed Munir Khan** | 201708987 | Developer |
-| **Rhmah Dhwi Makme Al-Anzi** | 201708350 | Developer |
-| **Salhah Saud Ghannam Al-Anzi** | 201707851 | Developer |
+| **Ruqayya Mohammed Munir Khan** | 201708987 | Developer |
+| **Salha Saud Ghannam Al-Anzi** | 201707851 | Developer |
+| **Rahma Dhwi Makme Al-Anzi** | 201708350 | Developer |
 
 ### 👩‍🏫 Supervisor
 **Dr. Asma Ahmed Esmail AL Hashmi**
