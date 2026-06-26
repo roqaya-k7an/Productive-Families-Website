@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productive Families Website — Graduation Project</title>
+  <meta name="description" content="An e-commerce platform that empowers productive families to market and sell their handmade products online. Graduation project, Northern Border University, 2020–2021.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#ff5a5f;
+      --brand-dark:#e0484d;
+      --green:#1f9d55;
+      --ink:#1f2430;
+      --muted:#6b7280;
+      --bg:#fff;
+      --soft:#fff5f5;
+      --line:#f0e3e3;
+      --shadow:0 12px 40px rgba(31,36,48,.12);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+    .btn{display:inline-block;background:var(--brand);color:#fff;padding:13px 28px;border-radius:50px;font-weight:600;transition:.25s;box-shadow:0 8px 22px rgba(255,90,95,.35)}
+    .btn:hover{background:var(--brand-dark);transform:translateY(-2px)}
+    .btn.ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.7);box-shadow:none}
+    .btn.ghost:hover{background:rgba(255,255,255,.15)}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.1rem}
+    .logo .cart{color:var(--brand);font-size:1.4rem}
+    .logo span{color:var(--brand)}
+    .nav-links{display:flex;gap:26px;font-weight:500;font-size:.95rem}
+    .nav-links a{color:var(--muted);transition:.2s}
+    .nav-links a:hover{color:var(--brand)}
+    @media(max-width:720px){.nav-links{display:none}}
+
+    /* HERO */
+    header.hero{background:linear-gradient(135deg,#ff6b6f 0%,#ff8a5b 100%);color:#fff;padding:84px 0 96px;position:relative;overflow:hidden}
+    header.hero:after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;background:rgba(255,255,255,.12);border-radius:50%}
+    header.hero:before{content:"";position:absolute;left:-90px;bottom:-140px;width:300px;height:300px;background:rgba(255,255,255,.10);border-radius:50%}
+    .hero-inner{position:relative;z-index:2;max-width:760px}
+    .pill{display:inline-block;background:rgba(255,255,255,.2);padding:7px 16px;border-radius:50px;font-size:.82rem;font-weight:500;letter-spacing:.3px;margin-bottom:22px}
+    header.hero h1{font-size:clamp(2.1rem,5vw,3.5rem);font-weight:800;line-height:1.12;margin-bottom:18px}
+    header.hero p.lead{font-size:1.15rem;font-weight:300;opacity:.96;max-width:620px;margin-bottom:32px}
+    .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+
+    /* SECTIONS */
+    section{padding:78px 0}
+    .eyebrow{color:var(--brand);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-size:.8rem;margin-bottom:10px;text-align:center}
+    h2.title{text-align:center;font-size:2rem;font-weight:700;margin-bottom:14px}
+    .sub{text-align:center;color:var(--muted);max-width:680px;margin:0 auto 50px;font-weight:300}
+    .soft{background:var(--soft)}
+
+    /* OBJECTIVES */
+    .grid{display:grid;gap:24px}
+    .obj{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;transition:.25s}
+    .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .card .ico{font-size:1.8rem;margin-bottom:12px}
+    .card h3{font-size:1.05rem;margin-bottom:8px}
+    .card p{color:var(--muted);font-size:.93rem;font-weight:300}
+
+    /* ROLES */
+    .roles{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+    .role{background:#fff;border-radius:16px;padding:30px;border-top:4px solid var(--brand);box-shadow:0 6px 22px rgba(31,36,48,.06)}
+    .role .ico{font-size:2rem;margin-bottom:14px}
+    .role h3{font-size:1.15rem;margin-bottom:10px}
+    .role ul{list-style:none;color:var(--muted);font-size:.92rem;font-weight:300}
+    .role li{padding:5px 0 5px 22px;position:relative}
+    .role li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+
+    /* CATEGORIES */
+    .cats{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+    .cat{background:#fff;border:1px solid var(--line);padding:10px 22px;border-radius:50px;font-weight:500;font-size:.95rem}
+
+    /* GALLERY */
+    .gallery{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .shot{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 6px 20px rgba(31,36,48,.07)}
+    .shot img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;object-position:top}
+    .shot .cap{padding:13px 16px;font-weight:500;font-size:.92rem}
+
+    /* TECH */
+    .tech{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+    .chip{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 24px;font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(31,36,48,.05)}
+
+    /* TEAM */
+    .team{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+    .member{background:#fff;border-radius:16px;padding:30px 24px;text-align:center;border:1px solid var(--line);transition:.25s}
+    .member:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .avatar{width:74px;height:74px;border-radius:50%;margin:0 auto 16px;background:linear-gradient(135deg,var(--brand),#ff8a5b);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:700}
+    .member h3{font-size:1.02rem;margin-bottom:4px}
+    .member .id{color:var(--muted);font-size:.85rem;font-weight:300}
+    .member .tag{display:inline-block;margin-top:10px;background:var(--soft);color:var(--brand);padding:4px 14px;border-radius:50px;font-size:.78rem;font-weight:600}
+    .supervisor{max-width:420px;margin:36px auto 0;text-align:center;background:linear-gradient(135deg,#fff,#fff5f5);border:1px solid var(--line);border-radius:16px;padding:30px}
+    .supervisor .avatar{background:linear-gradient(135deg,#1f9d55,#3dd68c)}
+
+    /* FOOTER */
+    footer{background:var(--ink);color:#cfd3dc;padding:54px 0 30px;text-align:center}
+    footer h3{color:#fff;font-size:1.3rem;margin-bottom:18px}
+    .meta{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:center;font-size:.92rem;font-weight:300;margin-bottom:26px}
+    .meta span{opacity:.9}
+    .meta b{color:#fff;font-weight:600}
+    footer .copy{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;font-size:.85rem;opacity:.7}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <div class="logo"><span class="cart">🛒</span> Productive <span>Families</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#screens">Screenshots</a>
+        <a href="#tech">Tech</a>
+        <a href="#team">Team</a>
+      </div>
+      <a class="btn" href="https://github.com/roqaya-k7an/Productive-Families-Website" style="padding:9px 20px">GitHub ↗</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-inner">
+      <span class="pill">🎓 Graduation Project · Computer Science · 2020–2021</span>
+      <h1>Empowering Productive Families to Sell Online</h1>
+      <p class="lead">An e-commerce platform that connects low-income productive families directly
+        with customers — helping them market handmade food, crafts, and products, and transform from
+        dependent families into productive ones that contribute to economic development.</p>
+      <div class="hero-cta">
+        <a class="btn ghost" href="#about">Explore the Project</a>
+        <a class="btn ghost" href="https://github.com/roqaya-k7an/Productive-Families-Website">View Source Code</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="eyebrow">About the Project</div>
+      <h2 class="title">A marketplace built for the community</h2>
+      <p class="sub">Productive families rely on the handicrafts they produce — food, health & beauty
+        products, accessories, handicrafts and clothes. Marketing them through social media is slow
+        and costly. This website gives them one simple, fast place to reach customers and grow their income.</p>
+      <div class="grid obj">
+        <div class="card"><div class="ico">🎯</div><h3>Easy Marketing</h3><p>Give productive families a simple, effective way to market their products to a large segment of society.</p></div>
+        <div class="card"><div class="ico">🤝</div><h3>Connect People</h3><p>Create an environment that brings productive families and clients together in one place.</p></div>
+        <div class="card"><div class="ico">⏱️</div><h3>Save Time & Effort</h3><p>Replace scattered ads and phone calls with a single dedicated online storefront.</p></div>
+        <div class="card"><div class="ico">📈</div><h3>Grow Income</h3><p>Reach the largest possible number of shoppers and support economic development.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES / ROLES -->
+  <section id="features" class="soft">
+    <div class="wrap">
+      <div class="eyebrow">Key Features</div>
+      <h2 class="title">Four roles, one platform</h2>
+      <p class="sub">Each user type gets a tailored dashboard and permissions, while visitors can browse the storefront freely.</p>
+      <div class="grid roles">
+        <div class="role"><div class="ico">🛠️</div><h3>Admin</h3><ul>
+          <li>View & manage all users</li><li>Manage products & families</li>
+          <li>Oversee clients & agents</li><li>Follow up on all operations</li></ul></div>
+        <div class="role"><div class="ico">👩‍🍳</div><h3>Productive Family</h3><ul>
+          <li>Register & log in</li><li>Add, edit & delete products</li>
+          <li>View incoming orders</li><li>Accept or refuse demands</li></ul></div>
+        <div class="role"><div class="ico">🛍️</div><h3>Client</h3><ul>
+          <li>Browse by category</li><li>Add items to cart</li>
+          <li>Send product demands</li><li>Track order status</li></ul></div>
+        <div class="role"><div class="ico">🚚</div><h3>Delivery Agent</h3><ul>
+          <li>View delivery orders</li><li>Accept or cancel deliveries</li>
+          <li>Manage their account</li><li>Track active requests</li></ul></div>
+      </div>
+      <p class="sub" style="margin-top:50px;margin-bottom:22px"><strong>Browse five product categories — no login required:</strong></p>
+      <div class="cats">
+        <div class="cat">🍽️ Food</div>
+        <div class="cat">💄 Health & Beauty</div>
+        <div class="cat">👜 Accessories</div>
+        <div class="cat">🧶 Handicrafts</div>
+        <div class="cat">👗 Clothes</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section id="screens">
+    <div class="wrap">
+      <div class="eyebrow">Screenshots</div>
+      <h2 class="title">A look inside the system</h2>
+      <p class="sub">Real screens from the implemented website across all user roles.</p>
+      <div class="grid gallery">
+        <div class="shot"><img src="screenshots/home-hero.jpg" alt="Home page"><div class="cap">🏠 Home Page</div></div>
+        <div class="shot"><img src="screenshots/products.jpg" alt="Products"><div class="cap">🛍️ Product Storefront</div></div>
+        <div class="shot"><img src="screenshots/login.jpg" alt="Login"><div class="cap">🔐 Login</div></div>
+        <div class="shot"><img src="screenshots/register.jpg" alt="Register"><div class="cap">📝 Family Registration</div></div>
+        <div class="shot"><img src="screenshots/admin-dashboard.png" alt="Admin dashboard"><div class="cap">🛠️ Admin Dashboard</div></div>
+        <div class="shot"><img src="screenshots/manage-products.jpg" alt="Manage products"><div class="cap">📦 Manage Products</div></div>
+        <div class="shot"><img src="screenshots/add-product.jpg" alt="Add product"><div class="cap">➕ Add Product</div></div>
+        <div class="shot"><img src="screenshots/edit-product.jpg" alt="Edit product"><div class="cap">✏️ Edit Product</div></div>
+        <div class="shot"><img src="screenshots/cart.jpg" alt="Cart"><div class="cap">🛒 Shopping Cart</div></div>
+        <div class="shot"><img src="screenshots/current-demand.jpg" alt="Current demand"><div class="cap">📋 Current Demands</div></div>
+        <div class="shot"><img src="screenshots/incoming-requests.png" alt="Incoming requests"><div class="cap">📨 Incoming Requests</div></div>
+        <div class="shot"><img src="screenshots/delivery-agent.png" alt="Delivery agent"><div class="cap">🚚 Delivery Agent</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech" class="soft">
+    <div class="wrap">
+      <div class="eyebrow">Built With</div>
+      <h2 class="title">Technology Stack</h2>
+      <p class="sub">Developed following the Waterfall SDLC — from planning and analysis through design, implementation and testing.</p>
+      <div class="tech">
+        <div class="chip">🐘 PHP</div>
+        <div class="chip">🗄️ MySQL</div>
+        <div class="chip">🌐 HTML5</div>
+        <div class="chip">🎨 CSS3</div>
+        <div class="chip">🅱️ Bootstrap</div>
+        <div class="chip">⚡ jQuery</div>
+        <div class="chip">🖥️ Apache / XAMPP</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="wrap">
+      <div class="eyebrow">The Team</div>
+      <h2 class="title">Project Contributors</h2>
+      <p class="sub">Submitted in partial fulfillment of the requirements for the degree of Bachelor of Science.</p>
+      <div class="grid team">
+        <div class="member"><div class="avatar">RK</div><h3>Roqaya Mohammed Munir Khan</h3><div class="id">ID: 201708987</div><div class="tag">Developer</div></div>
+        <div class="member"><div class="avatar">RA</div><h3>Rhmah Dhwi Makme Al-Anzi</h3><div class="id">ID: 201708350</div><div class="tag">Developer</div></div>
+        <div class="member"><div class="avatar">SA</div><h3>Salhah Saud Ghannam Al-Anzi</h3><div class="id">ID: 201707851</div><div class="tag">Developer</div></div>
+      </div>
+      <div class="supervisor">
+        <div class="avatar">DA</div>
+        <h3>Dr. Asma Ahmed Esmail AL Hashmi</h3>
+        <div class="id">Project Supervisor</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <h3>🎓 Productive Families Website</h3>
+      <div class="meta">
+        <span><b>Degree:</b> B.Sc. Computer Science</span>
+        <span><b>University:</b> Northern Border University</span>
+        <span><b>Location:</b> Arar, Saudi Arabia</span>
+        <span><b>Course:</b> 1105_492</span>
+        <span><b>Term:</b> Second Semester, 2020–2021</span>
+      </div>
+      <div class="copy">© 2020–2021 · College of Science, Computer Science Department · Graduation Project</div>
+    </div>
+  </footer>
+
+</body>
+</html>
