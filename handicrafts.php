@@ -51,7 +51,11 @@ session_start();
         <span>Loading</span>
       </div>
     </div> 
-    <!-- / wpf loader Two -->       
+    <!-- / wpf loader Two -->
+    <script>
+    /* Fallback: always hide the loading overlay even if jQuery/CDN is slow or fails */
+    (function(){function h(){var l=document.getElementById('wpf-loader-two');if(l){l.style.transition='opacity .4s';l.style.opacity='0';setTimeout(function(){l.style.display='none';},400);}}window.addEventListener('load',h);document.addEventListener('DOMContentLoaded',function(){setTimeout(h,1200);});setTimeout(h,4000);})();
+    </script>       
  <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
   <!-- END SCROLL TOP BUTTON -->
