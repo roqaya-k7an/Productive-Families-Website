@@ -1,10 +1,14 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Productive Families |About</title>
+    <title>Productive Families</title>
     
     <!-- Font awesome -->
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -74,11 +78,12 @@
                 
                 <!-- / cellphone -->
               </div>
-              <!-- / header top left -->
+               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  
-                  <strong><li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li></strong>
+                  <li><a href="clienthome.php">My Account</a></li>
+                  <li class="hidden-xs"><a href="clientcart.php">My Cart</a></li>
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
                 </ul>
               </div>
             </div>
@@ -89,7 +94,7 @@
     <!-- / header top  -->
 
     <!-- start header bottom  -->
-      <div class="aa-header-bottom">
+    <div class="aa-header-bottom">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -112,7 +117,7 @@
                   <span class="aa-cart-title"></span>
                   <span class="aa-cart-notify"></span>
                 </a>
-            
+             
               </div>
               <!-- / cart box -->
               <!-- search box -->
@@ -145,14 +150,12 @@
             <ul class="nav navbar-nav">
               <li><a href="index.php">Home</a></li>
               <li><a href="#">Account <span class="caret"></span></a>
-                <ul class="dropdown-menu"> 
-                     <li><a href="accountadmin.php">Admin</a></li>
+                <ul class="dropdown-menu">                
+                   <li><a href="accountadmin.php">Admin</a></li>
                     <li><a href="accountpro.php">Productive family</a></li>
                   <li><a href="accountclient.php">client</a></li>
-                  
                   <li><a href="accountagent.php">Delivery Agent</a></li>
-                                                                 
-                  
+                                                                                                              
                   
                 </ul>
               </li>
@@ -185,37 +188,82 @@
     <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
-       <h2>About Us</h2>
+        <h2>Productive Families</h2>
         <ol class="breadcrumb">
           <li><a href="index.php">Home</a></li>                   
-          <li class="active">Account</li>
+            
         </ol>
       </div>
      </div>
    </div>
-  </section> 
- 
-  <!-- catg header banner section -->
-    <!-- / catg header banner section -->
-<!-- start contact section -->
- <section id="aa-contact">
+  </section>
+  <!-- / catg header banner section -->
+
+  <!-- product category -->
+   <section id="checkout" dir="rtl" align="right">
    <div class="container">
      <div class="row">
        <div class="col-md-12">
-         <div class="aa-contact-area">
-           <div class="aa-contact-top">
-             <h2>Productive Families</h2>
-             <p>.</p>
-           </div>
-           <!-- contact map -->
-           <div class="aa-contact-map">
-              <p>
-               </p>
-           </div>
-           <!-- Contact address -->
-           
-  <!-- Subscribe section -->
+        <div class="checkout-area">
+                    
+                    <!-- Start men product category -->
+                    <div class="tab-pane fade in active" id="food">
+                      <ul class="aa-product-catg">
+                        <!-- start single product item -->
+                          <?php 
+                    
+require 'config.php';
+   $type= "food";                  
+$result = mysqli_query($con,"SELECT * FROM profamily")
+or die(mysqli_error());
+// display data in table
+while($row = mysqli_fetch_array( $result )) {
+// echo out the contents of each row into a table
  
+?>
+                        <li>
+                          <figure>
+                          <p class="aa-product-img" href="<?php echo htmlentities($row['prodid']);?>"><img src="img/logo11.jpg" alt="polo shirt img"></p>
+                            <p class="aa-add-card-btn" href = ""><?php echo htmlentities($row['summary']);?></p>
+                              <figcaption>
+                              <h4 class="aa-product-title"><?php echo htmlentities($row['proname']);?></h4>
+                              <span class="aa-product-price"> <?php echo htmlentities($row['phoneno']);?></span><span class="aa-product-price"></span>
+                            </figcaption>
+                          </figure>                        
+                          <div class="aa-product-hvr-content">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
+                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                          
+                          </div>
+                          <!-- product badge -->
+                          <span class="aa-badge aa-sale" href="#"><?php echo htmlentities($row['city']);?></span>
+                        </li>
+                          <?php
+}
+                       
+?>
+                        
+                        
+                        <!-- start single product item -->
+                       
+                        <!-- start single product item -->
+                       
+                        <!-- start single product item -->
+                                            
+                      </ul> <center>
+                      <a class="aa-browse-btn" href="index.php">Back to home <span class="fa fa-long-arrow-right"></span></a> </center>
+                    </div>
+                </div><!-- /.modal-dialog -->
+              </div>
+              <!-- / quick view modal -->   
+        </div>
+      </div>
+  </section>
+  <!-- / product category -->
+
+
+  <!-- Subscribe section -->
+  
   <!-- / Subscribe section -->
 
   <!-- footer -->  
@@ -224,7 +272,9 @@
     <div class="aa-footer-top">
      <div class="container">
         <div class="row">
-  
+        <div class="col-md-12">
+         
+        </div>
       </div>
      </div>
     </div>
@@ -247,6 +297,7 @@
       </div>
     </div>
   </footer>
+  <!-- / footer -->
   <?php	
 require 'config.php';
 if (isset($_POST['log']))
@@ -391,6 +442,8 @@ echo "<script>alert('username or password false');</script>";
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div>    
+
+    
 
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

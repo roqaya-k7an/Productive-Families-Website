@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Productive Families |About</title>
+    <title>Productive Families | Account Page</title>
     
     <!-- Font awesome -->
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -77,8 +77,8 @@
               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  
-                  <strong><li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li></strong>
+
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
                 </ul>
               </div>
             </div>
@@ -112,7 +112,7 @@
                   <span class="aa-cart-title"></span>
                   <span class="aa-cart-notify"></span>
                 </a>
-            
+               
               </div>
               <!-- / cart box -->
               <!-- search box -->
@@ -151,15 +151,10 @@
                   <li><a href="accountclient.php">client</a></li>
                   
                   <li><a href="accountagent.php">Delivery Agent</a></li>
-                                                                 
-                  
-                  
                 </ul>
               </li>
               <li><a href="profamily.php">Productive families </a>
-                
-              </li>
-                    
+              </li>    
               <li><a href="#">Category <span class="caret"></span></a>
                 <ul class="dropdown-menu">                
                    <li><a href="food.php">Food</a></li>
@@ -185,47 +180,236 @@
     <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
-       <h2>About Us</h2>
+        <h2>Account Page</h2>
         <ol class="breadcrumb">
-          <li><a href="index.php">Home</a></li>                   
+          <li><a href="index.html">Home</a></li>                   
           <li class="active">Account</li>
         </ol>
       </div>
      </div>
    </div>
-  </section> 
- 
-  <!-- catg header banner section -->
-    <!-- / catg header banner section -->
-<!-- start contact section -->
- <section id="aa-contact">
+  </section>
+  <!-- / catg header banner section -->
+
+ <!-- Cart view section -->
+ <section id="checkout">
    <div class="container">
      <div class="row">
        <div class="col-md-12">
-         <div class="aa-contact-area">
-           <div class="aa-contact-top">
-             <h2>Productive Families</h2>
-             <p>.</p>
+        <div class="checkout-area">
+          <form action="">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="checkout-left">
+                  <div class="panel-group" id="accordion">
+                    <!-- Coupon section -->
+                    <div class="panel panel-default aa-checkout-coupon">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            Personal Information
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                          
+                          <input type="submit" value="Update Information" class="aa-browse-btn">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Login section -->
+                    <div class="panel panel-default aa-checkout-login">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            Products 
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <div class="cart-view-area">
+                            <div class="cart-view-table aa-wishlist-table">
+             <form action="">
+               <div class="table-responsive">
+                   
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                      
+                    <tbody>
+                      <tr>
+                        
+                        <td><a class="aa-cart-title" href="#"></a></td>
+                        <td></td>
+                        <td> </td>
+                         <td><a href="#"><img src="<?php echo htmlentities($row['image']);?>" width="50"  height="50" alt="img"></a></td>
+                          <td><a class="remove" onclick='javascript:confirmationDelete($(this));return false;' href="delbook.php?bno=<?php echo htmlentities($row['bno']);?>"><fa class="fa fa-close"></fa></a></td>
+                       <script>
+function confirmationDelete(anchor)
+{
+   var conf = confirm('Are you sure to delete Product');
+   if(conf)
+      window.location=anchor.attr("href");
+}
+</script>
+                          <td><a href="editbooks.php?bno=<?php echo htmlentities($row['bno']);?>" class="aa-add-to-cart-btn">Edit</a></td>
+                      </tr>
+                      
+                                         
+                      </tbody>
+                      
+                      
+                  </table>
+                   <a href="add_books.php" class="aa-browse-btn" > Add Product </a>
+                   
+                </div>
+             </form>             
            </div>
-           <!-- contact map -->
-           <div class="aa-contact-map">
-              <p>
-               </p>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Billing Details -->
+                    <div class="panel panel-default aa-checkout-billaddress">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                            Demands
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                       <div class="cart-view-area">
+                            <div class="cart-view-table aa-wishlist-table">
+             <form action="">
+               <div class="table-responsive">
+                   
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        
+                        <th>No</th>
+                        <th>PName</th>
+                        <th>Price</th>
+                        <th>Units Number</th>
+                        <th>Total</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                      
+                    <tbody>
+                      <tr>
+                        
+                        <td><a class="aa-cart-title" href="#"></a></td>
+                        <td></td>
+                        <td> </td>
+                          <td> </td>
+                         <td><a href="#"></a></td>
+                          <td><a class="aa-add-to-cart-btn" onclick='javascript:confirmationDelete($(this));return false;' href="delbook.php?bno=<?php echo htmlentities($row['bno']);?>"><fa class="fa fa-close"></fa>Refuse</a></td>
+                       <script>
+function confirmationDelete(anchor)
+{
+   var conf = confirm('Are you sure to delete Product');
+   if(conf)
+      window.location=anchor.attr("href");
+}
+</script>
+                          <td><a href="editbooks.php?bno=<?php echo htmlentities($row['bno']);?>" class="aa-add-to-cart-btn">Accept</a></td>
+                      </tr>
+                      
+                                         
+                      </tbody>
+                      
+                      
+                  </table>
+                   <a href="add_books.php" class="aa-browse-btn" > View accepted demands </a>
+                   
+                </div>
+             </form>             
            </div>
-           <!-- Contact address -->
-           
-  <!-- Subscribe section -->
- 
-  <!-- / Subscribe section -->
+                            </div>                                    
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Shipping Address -->
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="checkout-right">
+                  <h4>My Account </h4>
+                  <div class="aa-order-summary-area">
+                    <table class="table table-responsive">
+                      <thead>
+                        <tr>
+                          <th>Number</th>
+                          <th>1</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td> <strong> Name</strong></td>
+                          <td>Profamily</td>
+                        </tr>
+                        <tr>
+                          <td><strong> Address</strong></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td> <strong> Phone Number</strong></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th>username</th>
+                          <td></td>
+                        </tr>
+                         <tr>
+                          <th>Password</th>
+                          <td></td>
+                        </tr>
+                         
+                      </tfoot>
+                    </table>
+                  </div>
+                  <h4>Logout</h4>
+                  <div class="aa-payment-method">                    
+                    
+                    <input type="submit" value="Logout" class="aa-browse-btn">                
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- / Cart view section -->
 
   <!-- footer -->  
   <footer id="aa-footer">
     <!-- footer bottom -->
     <div class="aa-footer-top">
      <div class="container">
-        <div class="row">
-  
-      </div>
+        
+     
      </div>
     </div>
     <!-- footer-bottom -->
@@ -247,7 +431,8 @@
       </div>
     </div>
   </footer>
-  <?php	
+  <!-- / footer -->
+ <?php	
 require 'config.php';
 if (isset($_POST['log']))
 {
@@ -392,27 +577,27 @@ echo "<script>alert('username or password false');</script>";
     </div><!-- /.modal-dialog -->
   </div>    
 
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.js"></script>  
-  <!-- SmartMenus jQuery plugin -->
-  <script type="text/javascript" src="js/jquery.smartmenus.js"></script>
-  <!-- SmartMenus jQuery Bootstrap Addon -->
-  <script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>  
-  <!-- To Slider JS -->
-  <script src="js/sequence.js"></script>
-  <script src="js/sequence-theme.modern-slide-in.js"></script>  
-  <!-- Product view slider -->
-  <script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
-  <script type="text/javascript" src="js/jquery.simpleLens.js"></script>
-  <!-- slick slider -->
-  <script type="text/javascript" src="js/slick.js"></script>
-  <!-- Price picker slider -->
-  <script type="text/javascript" src="js/nouislider.js"></script>
-  <!-- Custom js -->
-  <script src="js/custom.js"></script> 
-  
 
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>  
+    <!-- SmartMenus jQuery plugin -->
+    <script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+    <!-- SmartMenus jQuery Bootstrap Addon -->
+    <script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>  
+    <!-- To Slider JS -->
+    <script src="js/sequence.js"></script>
+    <script src="js/sequence-theme.modern-slide-in.js"></script>  
+    <!-- Product view slider -->
+    <script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
+    <script type="text/javascript" src="js/jquery.simpleLens.js"></script>
+    <!-- slick slider -->
+    <script type="text/javascript" src="js/slick.js"></script>
+    <!-- Price picker slider -->
+    <script type="text/javascript" src="js/nouislider.js"></script>
+    <!-- Custom js -->
+    <script src="js/custom.js"></script> 
+    
   </body>
 </html>

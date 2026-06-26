@@ -1,10 +1,14 @@
+<?php
+session_start();
+$clientid=$_SESSION['clientid'];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Productive Families |About</title>
+    <title>Productive Families | Add address</title>
     
     <!-- Font awesome -->
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -74,11 +78,12 @@
                 
                 <!-- / cellphone -->
               </div>
-              <!-- / header top left -->
+               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  
-                  <strong><li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li></strong>
+                  <li><a href="clienthome.php">My Account</a></li>
+                  <li class="hidden-xs"><a href="clientcart.php">My Cart</a></li>
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
                 </ul>
               </div>
             </div>
@@ -89,7 +94,7 @@
     <!-- / header top  -->
 
     <!-- start header bottom  -->
-      <div class="aa-header-bottom">
+    <div class="aa-header-bottom">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -112,7 +117,7 @@
                   <span class="aa-cart-title"></span>
                   <span class="aa-cart-notify"></span>
                 </a>
-            
+             
               </div>
               <!-- / cart box -->
               <!-- search box -->
@@ -145,14 +150,12 @@
             <ul class="nav navbar-nav">
               <li><a href="index.php">Home</a></li>
               <li><a href="#">Account <span class="caret"></span></a>
-                <ul class="dropdown-menu"> 
-                     <li><a href="accountadmin.php">Admin</a></li>
+                <ul class="dropdown-menu">                
+                   <li><a href="accountadmin.php">Admin</a></li>
                     <li><a href="accountpro.php">Productive family</a></li>
                   <li><a href="accountclient.php">client</a></li>
-                  
                   <li><a href="accountagent.php">Delivery Agent</a></li>
-                                                                 
-                  
+                                                                                                              
                   
                 </ul>
               </li>
@@ -177,55 +180,99 @@
       </div>       
     </div>
   </section>
-  <!-- / menu -->  
+  <!-- / menu -->   
  
   <!-- catg header banner section -->
-  <section id="aa-catg-head-banner">
-    <img src="img/fashion/1.jpg" alt="fashion img">
-    <div class="aa-catg-head-banner-area">
-     <div class="container">
-      <div class="aa-catg-head-banner-content">
-       <h2>About Us</h2>
-        <ol class="breadcrumb">
-          <li><a href="index.php">Home</a></li>                   
-          <li class="active">Account</li>
-        </ol>
-      </div>
-     </div>
-   </div>
-  </section> 
- 
-  <!-- catg header banner section -->
-    <!-- / catg header banner section -->
-<!-- start contact section -->
- <section id="aa-contact">
+  
+  <!-- / catg header banner section -->
+
+ <!-- Cart view section -->
+ <section id="aa-myaccount">
    <div class="container">
      <div class="row">
        <div class="col-md-12">
-         <div class="aa-contact-area">
-           <div class="aa-contact-top">
-             <h2>Productive Families</h2>
-             <p>.</p>
-           </div>
-           <!-- contact map -->
-           <div class="aa-contact-map">
-              <p>
-               </p>
-           </div>
-           <!-- Contact address -->
-           
-  <!-- Subscribe section -->
- 
-  <!-- / Subscribe section -->
+        <div class="aa-myaccount-area">         
+            <div class="row">
+              <div class="col-md-6">
+                <div class="aa-myaccount-login">
+                <h4>Add address</h4>
+                              <form action=""  method="post" class="aa-login-form">
+                     <label for="">city<span>*</span></label>
+                     
+                     <select name="city" required style=" border: 1px solid #ccc;
+  color: #999;
+  height: 40px;
+  padding: 10px;
+  width: 100%; " >
+                                  <option value="0">city</option>
+                                  <option value="Arar">ARAR</option>
+                                  <option value="riyade">Riyade</option>
+                                  <option value="Macca"> Macca</option>
+                                  <option value="El Madena">El Madena</option>
+                                </select>
+                     
+                    <label for="">street<span>*</span></label>
+                    <input type="text" placeholder="street" name="street">
+                     <label for="">location<span>*</span></label>
+                    <input type="url" placeholder="location" name="location" required style=" border: 1px solid #ccc;
+  color: #999;
+  height: 40px;
+  padding: 10px;
+  width: 100%; ">
+                     
+                                  <br>
+                    
+                                  <label for="">client No<span>*</span></label>
+                    <input type="text" placeholder="properties" value="<?php $clientid=$_SESSION['clientid']; echo$clientid ?>" name="clientid">
+                    <button type="submit" name="add" class="aa-browse-btn">Add</button>                    
+                  </form>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="aa-myaccount-register"> 
+                    <br>
+                 <img src="img/01.jpg" width="500" height="500"  >
+                </div>
+              </div>
+            </div>          
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- / Cart view section -->
+<?php
+                        
+require 'config.php';
 
+if (isset($_POST['add']))
+{
+$city=$_POST['city'];
+$street=$_POST['street'];
+$location=$_POST['location'];
+$clientid=$_POST['clientid'] ;
+$sql="INSERT INTO clientaddress (clientid,city,street,location) VALUES 
+    ('$clientid','$city','$street','$location')";
+	mysqli_query($con,$sql);
+	echo "<script>alert('Successfully Adding address ');</script>";
+    	
+?>
+<script type="text/javascript">
+window.location.href = 'clienthome.php?success';
+</script>
+<?php
+
+
+}
+
+
+?> 
   <!-- footer -->  
   <footer id="aa-footer">
     <!-- footer bottom -->
     <div class="aa-footer-top">
      <div class="container">
-        <div class="row">
-  
-      </div>
+        
      </div>
     </div>
     <!-- footer-bottom -->
@@ -247,6 +294,7 @@
       </div>
     </div>
   </footer>
+  <!-- / footer -->
   <?php	
 require 'config.php';
 if (isset($_POST['log']))
@@ -392,6 +440,7 @@ echo "<script>alert('username or password false');</script>";
     </div><!-- /.modal-dialog -->
   </div>    
 
+    
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->

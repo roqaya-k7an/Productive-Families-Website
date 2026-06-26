@@ -1,10 +1,37 @@
+<?php
+session_start();
+
+?>
+<?php
+require 'config.php';
+if (isset($_SESSION['clientid'])){
+ $clientid=$_SESSION['clientid'];
+		?>
+		<script>
+		
+        </script>
+		<?php
+	}
+	
+else{
+    ?>
+ <script>
+		alert('Must login first');
+       window.location.href='index.php?fail';
+        </script>
+		<?php   
+    
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Productive Families |About</title>
+    <title>Productive Families | My Cart</title>
     
     <!-- Font awesome -->
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -37,20 +64,20 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+  
 
   </head>
-  <body>
-  
-   <!-- wpf loader Two -->
+  <body>  
+    <!-- wpf loader Two -->
     <div id="wpf-loader-two">          
       <div class="wpf-loader-two-inner">
         <span>Loading</span>
       </div>
     </div> 
     <!-- / wpf loader Two -->       
- <!-- SCROLL TOP BUTTON -->
+    <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
-  <!-- END SCROLL TOP BUTTON -->
+    <!-- END SCROLL TOP BUTTON -->
 
 
   <!-- Start header section -->
@@ -75,10 +102,12 @@
                 <!-- / cellphone -->
               </div>
               <!-- / header top left -->
+              <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  
-                  <strong><li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li></strong>
+                  <li><a href="clienthome.php">My Account</a></li>
+                  <li class="hidden-xs"><a href="clientcart.php">My Cart</a></li>
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
                 </ul>
               </div>
             </div>
@@ -89,7 +118,7 @@
     <!-- / header top  -->
 
     <!-- start header bottom  -->
-      <div class="aa-header-bottom">
+    <div class="aa-header-bottom">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -112,7 +141,7 @@
                   <span class="aa-cart-title"></span>
                   <span class="aa-cart-notify"></span>
                 </a>
-            
+             
               </div>
               <!-- / cart box -->
               <!-- search box -->
@@ -145,14 +174,12 @@
             <ul class="nav navbar-nav">
               <li><a href="index.php">Home</a></li>
               <li><a href="#">Account <span class="caret"></span></a>
-                <ul class="dropdown-menu"> 
-                     <li><a href="accountadmin.php">Admin</a></li>
+                <ul class="dropdown-menu">                
+                   <li><a href="accountadmin.php">Admin</a></li>
                     <li><a href="accountpro.php">Productive family</a></li>
                   <li><a href="accountclient.php">client</a></li>
-                  
                   <li><a href="accountagent.php">Delivery Agent</a></li>
-                                                                 
-                  
+                                                                                                              
                   
                 </ul>
               </li>
@@ -178,44 +205,109 @@
     </div>
   </section>
   <!-- / menu -->  
- 
   <!-- catg header banner section -->
   <section id="aa-catg-head-banner">
-    <img src="img/fashion/1.jpg" alt="fashion img">
-    <div class="aa-catg-head-banner-area">
+   <img src="img/fashion/1.jpg" alt="fashion img">
+   <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
-       <h2>About Us</h2>
+        <h2>Cart Page</h2>
         <ol class="breadcrumb">
-          <li><a href="index.php">Home</a></li>                   
-          <li class="active">Account</li>
+          <li><a href="index.html">Home</a></li>                   
+          <li class="active"><a href="clienthome.php">MY Account</a></li>
         </ol>
       </div>
      </div>
    </div>
-  </section> 
- 
-  <!-- catg header banner section -->
-    <!-- / catg header banner section -->
-<!-- start contact section -->
- <section id="aa-contact">
+  </section>
+  <!-- / catg header banner section -->
+
+ <!-- Cart view section -->
+ <section id="cart-view">
    <div class="container">
      <div class="row">
        <div class="col-md-12">
-         <div class="aa-contact-area">
-           <div class="aa-contact-top">
-             <h2>Productive Families</h2>
-             <p>.</p>
+         <div class="cart-view-area">
+           <div class="cart-view-table aa-wishlist-table">
+             <form action="">
+               <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                          <th></th>
+                        <th>Productno</th>
+                        <th>Productname</th>
+                       
+                        <th>Price</th>
+                        <th>image</th>
+                        <th>Quantity</th>
+                        <th>total</th>
+                           <th></th>
+                          <th></th>
+                      </tr>
+                    </thead>
+                       <?php 
+                    
+require 'config.php';
+$clientid=$_SESSION['clientid'] ;
+
+$result = mysqli_query($con,"SELECT * FROM cart where clientid='$clientid' ")
+or die(mysqli_error());
+// display data in table
+while($row = mysqli_fetch_array( $result )) {
+// echo out the contents of each row into a table
+   $cartno=$row['cartno'];
+?>
+                    <tbody>
+                        <form method="post" action="updatecart.php" enctype="multipart/form-data">
+                      <tr> 
+                         
+                        <td>
+                            <a class="remove" onclick='javascript:confirmationDelete($(this));return false;' href="delrequestcart.php?cartno=<?php echo htmlentities($row['cartno']);?>"><fa class="fa fa-close"></fa></a></td>
+                       <script>
+function confirmationDelete(anchor)
+{
+   var conf = confirm('Are you sure to delete request?');
+   if(conf)
+      window.location=anchor.attr("href");
+}
+</script>
+                            
+                         
+                        <td><?php echo htmlentities($row['productno']);?></td>
+                        <td><a class="aa-cart-title" href="#"><?php echo htmlentities($row['productname']);?></a></td>
+                        <td><?php echo htmlentities($row['price']);?></td>
+                        
+                          <td><a href="#"><img src="<?php echo htmlentities($row['image']);?>" width="50" height="60" alt="img"></a></td>
+                          
+                          <td><input class="aa-cart-quantity" type="number" name="unitno" value="<?php echo htmlentities($row['unitno']);?>"></td>
+                           <input type="hidden" name="cartno" value="<?php echo htmlentities($row['cartno']);?>">
+                          <td><?php echo htmlentities($row['total']);?></td>
+                          <td><input type="submit" name="edit" class="aa-add-to-cart-btn" value="Update Cart"></td>
+                        <td><a href="senddemand.php?cartno=<?php echo htmlentities($row['cartno']);?>" class="aa-add-to-cart-btn">Send Demand</a></td>
+                      </tr>
+                            </form>
+                             
+                         <?php
+}
+                       
+?>
+                                        
+                      </tbody>
+                  </table>
+                </div>
+             </form>             
            </div>
-           <!-- contact map -->
-           <div class="aa-contact-map">
-              <p>
-               </p>
-           </div>
-           <!-- Contact address -->
-           
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- / Cart view section -->
+
+
   <!-- Subscribe section -->
- 
+  
   <!-- / Subscribe section -->
 
   <!-- footer -->  
@@ -224,7 +316,7 @@
     <div class="aa-footer-top">
      <div class="container">
         <div class="row">
-  
+        
       </div>
      </div>
     </div>
@@ -247,6 +339,8 @@
       </div>
     </div>
   </footer>
+  <!-- / footer -->
+  <!-- Login Modal -->  
   <?php	
 require 'config.php';
 if (isset($_POST['log']))
@@ -391,6 +485,7 @@ echo "<script>alert('username or password false');</script>";
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div>    
+
 
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

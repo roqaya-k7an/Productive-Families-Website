@@ -1,10 +1,14 @@
+<?php
+session_start();
+$proid=$_SESSION['proid'];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Productive Families |About</title>
+    <title>Productive Families | Add Product</title>
     
     <!-- Font awesome -->
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -77,8 +81,11 @@
               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  
-                  <strong><li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li></strong>
+                  <li><a href="account.html">My Account</a></li>
+                  <li class="hidden-xs"><a href="wishlist.html">Wishlist</a></li>
+                  <li class="hidden-xs"><a href="cart.html">My Cart</a></li>
+                  <li class="hidden-xs"><a href="checkout.html">Checkout</a></li>
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
                 </ul>
               </div>
             </div>
@@ -109,10 +116,38 @@
               <div class="aa-cartbox">
                 <a class="aa-cart-link" href="#">
                   <span class="fa fa-shopping-basket"></span>
-                  <span class="aa-cart-title"></span>
-                  <span class="aa-cart-notify"></span>
+                  <span class="aa-cart-title">SHOPPING CART</span>
+                  <span class="aa-cart-notify">2</span>
                 </a>
-            
+                <div class="aa-cartbox-summary">
+                  <ul>
+                    <li>
+                      <a class="aa-cartbox-img" href="#"><img src="img/01.jpg" alt="img"></a>
+                      <div class="aa-cartbox-info">
+                        <h4><a href="#">Product Name</a></h4>
+                        <p>1 x $250</p>
+                      </div>
+                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                    </li>
+                    <li>
+                      <a class="aa-cartbox-img" href="#"><img src="img/02.jpg" alt="img"></a>
+                      <div class="aa-cartbox-info">
+                        <h4><a href="#">Product Name</a></h4>
+                        <p>1 x $250</p>
+                      </div>
+                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                    </li>                    
+                    <li>
+                      <span class="aa-cartbox-total-title">
+                        Total
+                      </span>
+                      <span class="aa-cartbox-total-price">
+                        $500
+                      </span>
+                    </li>
+                  </ul>
+                  <a class="aa-cartbox-checkout aa-primary-btn" href="checkout.html">Checkout</a>
+                </div>
               </div>
               <!-- / cart box -->
               <!-- search box -->
@@ -145,18 +180,16 @@
             <ul class="nav navbar-nav">
               <li><a href="index.php">Home</a></li>
               <li><a href="#">Account <span class="caret"></span></a>
-                <ul class="dropdown-menu"> 
-                     <li><a href="accountadmin.php">Admin</a></li>
+                <ul class="dropdown-menu">                
+                  <li><a href="accountadmin.php">Admin</a></li>
                     <li><a href="accountpro.php">Productive family</a></li>
                   <li><a href="accountclient.php">client</a></li>
                   
                   <li><a href="accountagent.php">Delivery Agent</a></li>
                                                                  
-                  
-                  
                 </ul>
               </li>
-              <li><a href="profamily.php">Productive families </a>
+              <li><a href="#">Productive families </a>
                 
               </li>
                     
@@ -169,8 +202,8 @@
                      <li><a href="clothes.php">Clothes</a></li>
                 </ul>
               </li>
-                 <li><a href="about.php">About us</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                 <li><a href="#">About us</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -185,47 +218,97 @@
     <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
-       <h2>About Us</h2>
+        <h2>Add Product</h2>
         <ol class="breadcrumb">
           <li><a href="index.php">Home</a></li>                   
-          <li class="active">Account</li>
+            <li class="active">  <a href="profamilyhome.php">Account</a></li>
         </ol>
       </div>
      </div>
    </div>
-  </section> 
- 
-  <!-- catg header banner section -->
-    <!-- / catg header banner section -->
-<!-- start contact section -->
- <section id="aa-contact">
+  </section>
+  <!-- / catg header banner section -->
+
+ <!-- Cart view section -->
+ <section id="aa-myaccount">
    <div class="container">
      <div class="row">
        <div class="col-md-12">
-         <div class="aa-contact-area">
-           <div class="aa-contact-top">
-             <h2>Productive Families</h2>
-             <p>.</p>
-           </div>
-           <!-- contact map -->
-           <div class="aa-contact-map">
-              <p>
-               </p>
-           </div>
-           <!-- Contact address -->
-           
-  <!-- Subscribe section -->
- 
-  <!-- / Subscribe section -->
+        <div class="aa-myaccount-area">         
+            <div class="row">
+              <div class="col-md-6">
+                <div class="aa-myaccount-login">
+                <h4>Add Product</h4>
+                              <form action="uploadphotoproduct.php" enctype="multipart/form-data" method="post" class="aa-login-form">
+                     <label for="">Category<span>*</span></label>
+                     
+                     <select name="catname" required style=" border: 1px solid #ccc;
+  color: #999;
+  height: 40px;
+  padding: 10px;
+  width: 100%; " >
+                                  <option value="0">Product Category</option>
+                                  <option value="Food">Food</option>
+                                  <option value="Health and Beauty">Health and Beauty</option>
+                                  <option value="Accessories">Accessories</option>
+                                  <option value="Clothes">Clothes</option>
+                         <option value="Handicrafts">Handicrafts</option>
+                                </select>
+                     
+                    <label for="">Name<span>*</span></label>
+                    <input type="text" placeholder="name" name="name">
+                     <label for="">Price<span>*</span></label>
+                    <input type="text" placeholder="Price" name="price">
+                     <label for="">discribe<span>*</span></label>
+                                  
+                     <div class="form-group">                        
+                      <textarea class="form-control" rows="3" name="summary" placeholder="summary"></textarea>
+                    </div>
+                                  <label for="">Image<span>*</span></label>
+                   <input type="file" placeholder="Model" name="file" style=" border: 1px solid #ccc;
+  color: #999;
+  height: 40px;
+  padding: 10px;
+  width: 100%; ">
+                                  <br>
+                    <label for="">Properties<span>*</span></label>
+                    <input type="text" placeholder="properties" name="properties">
+                    <label for="">Pre-set<span>*</span></label>
+                     <select name="preset" required style=" border: 1px solid #ccc;
+  color: #999;
+  height: 40px;
+  padding: 10px;
+  width: 100%; " >
+                                  <option value="yes">Yes</option>
+                                  <option value="no">No</option>
+                                  
+                                </select>
+                                  <label for="">Profamily No<span>*</span></label>
+                    <input type="text" placeholder="properties" value="<?php $proid=$_SESSION['proid']; echo$proid ?>" name="proid">
+                    <button type="submit" name="add" class="aa-browse-btn">Add</button>                    
+                  </form>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="aa-myaccount-register"> 
+                    <br>
+                 <img src="img/01.jpg" width="500" height="500"  >
+                </div>
+              </div>
+            </div>          
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- / Cart view section -->
 
   <!-- footer -->  
   <footer id="aa-footer">
     <!-- footer bottom -->
     <div class="aa-footer-top">
      <div class="container">
-        <div class="row">
-  
-      </div>
+        
      </div>
     </div>
     <!-- footer-bottom -->
@@ -247,112 +330,7 @@
       </div>
     </div>
   </footer>
-  <?php	
-require 'config.php';
-if (isset($_POST['log']))
-{
-$userkind=$_POST['userkind'];
-$user=$_POST['username'];
-$pass=$_POST['password'];
-if ($userkind=="4"){
- $sql="SELECT * FROM admin where username='$user' AND password='$pass' ";
- $result=mysqli_query($con,$sql);
- $numrows=mysqli_num_rows($result);
- if ($numrows == 1 )
- {
-  $row=mysqli_fetch_assoc($result);
-  $adno=$row['adno'];
-    
-  $_SESSION['adno'] =$adno;
-     ?>
-<script type="text/javascript">
-window.location.href = 'adminhome.php?success';
-</script>
-<?php
- 
- }
- else
- {
- echo "<script>alert('username or password false');</script>";
- }
-
-}
-    
-if ($userkind=="1"){
- $sql="SELECT * FROM profamily where username='$user' AND password='$pass' ";
- $result=mysqli_query($con,$sql);
- $numrows=mysqli_num_rows($result);
- if ($numrows == 1 )
- {
-  $row=mysqli_fetch_assoc($result);
-  $proid=$row['proid'];
-  $_SESSION['proid'] =$proid;
-     
-     ?>
-<script type="text/javascript">
-window.location.href = 'profamilyhome.php?success';
-</script>
-<?php
- 
- }
- else
- {
- echo "<script>alert('username or password false');</script>";
- }
-
-}
- if ($userkind=="2") {
- $sql1="SELECT * from client where username='$user' AND password='$pass' ";
- $result1=mysqli_query($con,$sql1);
- $numrows=mysqli_num_rows($result1);
- if ($numrows == 1 )
- {
-  $row=mysqli_fetch_assoc($result1);
- $clientid=$row['clientid'];        
- $_SESSION['clientid'] =$clientid;
-  ?>
-<script type="text/javascript">
-window.location.href = 'clienthome.php?success';
-</script>
-<?php
-
-  
- }
- else
- {
-echo "<script>alert('username or password false');</script>";
- }
-
-}
-
-if ($userkind=="3") {
- $sql1="SELECT * from deliveryagent where username='$user' AND password='$pass' ";
- $result1=mysqli_query($con,$sql1);
- $numrows=mysqli_num_rows($result1);
- if ($numrows == 1 )
- {
-  $row=mysqli_fetch_assoc($result1);
- $agentid=$row['agentid'];        
- $_SESSION['agentid'] =$agentid;
-  ?>
-<script type="text/javascript">
-window.location.href = 'agenthome.php?success';
-</script>
-<?php
-
-  
- }
- else
- {
-echo "<script>alert('username or password false');</script>";
- }
-
-} 
-
-}
-
-
-?>
+  <!-- / footer -->
   <!-- Login Modal -->  
   <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -360,38 +338,39 @@ echo "<script>alert('username or password false');</script>";
         <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4>Login or Register</h4>
-          <form class="aa-login-form" action="" method="post">
+          <form class="aa-login-form" action="">
               <label for="">Role<span>*</span></label>
                      
-                     <select name="userkind" required style=" border: 1px solid #ccc;
+                     <select name="utype" required style=" border: 1px solid #ccc;
   color: #999;
   height: 40px;
   padding: 10px;
   width: 100%; " >
                                   <option value="0">user role</option>
-                                  <option value="4">Admin</option>
                                   <option value="1">Productive family</option>
                                   <option value="2">client</option>
                                   <option value="3">Delivery agent</option>
-                                  
+                                  <option value="4">Admin</option>
                                   
                                 </select>
             <label for="">Username or Email address<span>*</span></label>
-            <input type="text" placeholder="Username or email" name="username" required>
+            <input type="text" placeholder="Username or email">
             <label for="">Password<span>*</span></label>
-            <input type="password" placeholder="Password" name="password" required>
-            <button class="aa-browse-btn" type="submit" name="log">Login</button>
+            <input type="password" placeholder="Password">
+            <button class="aa-browse-btn" type="submit">Login</button>
             
             <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
             <div class="aa-register-now">
-              Don't have an account?<a href="accountclient.php">Register now!</a>
+              Don't have an account?<a href="account.html">Register now!</a>
             </div>
           </form>
         </div>                        
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-  </div>    
+  </div>
 
+
+    
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->

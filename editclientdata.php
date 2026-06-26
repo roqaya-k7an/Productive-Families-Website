@@ -1,10 +1,13 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Productive Families |About</title>
+    <title>Productive Families | Account Page</title>
     
     <!-- Font awesome -->
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -77,8 +80,9 @@
               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  
-                  <strong><li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li></strong>
+                  <li><a href="clienthome.php">My Account</a></li>
+                  <li class="hidden-xs"><a href="clientcart.php">My Cart</a></li>
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
                 </ul>
               </div>
             </div>
@@ -89,7 +93,7 @@
     <!-- / header top  -->
 
     <!-- start header bottom  -->
-      <div class="aa-header-bottom">
+    <div class="aa-header-bottom">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -112,7 +116,7 @@
                   <span class="aa-cart-title"></span>
                   <span class="aa-cart-notify"></span>
                 </a>
-            
+             
               </div>
               <!-- / cart box -->
               <!-- search box -->
@@ -145,14 +149,12 @@
             <ul class="nav navbar-nav">
               <li><a href="index.php">Home</a></li>
               <li><a href="#">Account <span class="caret"></span></a>
-                <ul class="dropdown-menu"> 
-                     <li><a href="accountadmin.php">Admin</a></li>
+                <ul class="dropdown-menu">                
+                   <li><a href="accountadmin.php">Admin</a></li>
                     <li><a href="accountpro.php">Productive family</a></li>
                   <li><a href="accountclient.php">client</a></li>
-                  
                   <li><a href="accountagent.php">Delivery Agent</a></li>
-                                                                 
-                  
+                                                                                                              
                   
                 </ul>
               </li>
@@ -178,54 +180,102 @@
     </div>
   </section>
   <!-- / menu -->  
- 
   <!-- catg header banner section -->
-  <section id="aa-catg-head-banner">
-    <img src="img/fashion/1.jpg" alt="fashion img">
-    <div class="aa-catg-head-banner-area">
-     <div class="container">
-      <div class="aa-catg-head-banner-content">
-       <h2>About Us</h2>
-        <ol class="breadcrumb">
-          <li><a href="index.php">Home</a></li>                   
-          <li class="active">Account</li>
-        </ol>
-      </div>
-     </div>
-   </div>
-  </section> 
- 
-  <!-- catg header banner section -->
-    <!-- / catg header banner section -->
-<!-- start contact section -->
- <section id="aa-contact">
+  
+
+ <!-- Cart view section -->
+ <section id="aa-myaccount">
    <div class="container">
      <div class="row">
        <div class="col-md-12">
-         <div class="aa-contact-area">
-           <div class="aa-contact-top">
-             <h2>Productive Families</h2>
-             <p>.</p>
-           </div>
-           <!-- contact map -->
-           <div class="aa-contact-map">
-              <p>
-               </p>
-           </div>
-           <!-- Contact address -->
-           
-  <!-- Subscribe section -->
- 
-  <!-- / Subscribe section -->
+        <div class="aa-myaccount-area">         
+            <div class="row">
+              <div class="col-md-6">
+                <div class="aa-myaccount-login">
+                <h4></h4>
+                    <?php 
+require 'config.php';
+$clientid= $_GET['clientid'];         
+$result = mysqli_query($con,"SELECT * FROM client where clientid= '$clientid' ")
+or die(mysqli_error());
+// display data in table
+while($row = mysqli_fetch_array( $result )) {
+// echo out the contents of each row into a table
+?>
+                 <img src="img/343.jpg" width="500" height="600">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="aa-myaccount-register">                 
+                 <h4>Client Data</h4>
+                 <form action="" method="post" class="aa-login-form">
+                     
+                    <label for="">Name<span>*</span></label>
+                    <input type="text" placeholder="name" value="<?php echo htmlentities($row['cname']);?>" name="name" required>
+                     <label for="">Phone number<span>*</span></label>
+                    <input type="tel" placeholder="Enter correct phone number" value="<?php echo htmlentities($row['phoneno']);?>" name="phone" pattern="[05]{2}[0-9]{4}[0-9]{4}" data-msg="Enter correct phone number" required style=" border: 1px solid #ccc;
+  color: #999;
+  height: 40px;
+  padding: 10px;
+  width: 100%; ">
+                     <label for="">Address<span>*</span></label>
+                    <input type="text" placeholder="Phone" value="<?php echo htmlentities($row['address']);?>" name="address" required minlength="10"  data-msg="Enter correct address" required>
+                    <label for="">Username or Email address<span>*</span></label>
+                    <input type="text" placeholder="Username or email" value="<?php echo htmlentities($row['username']);?>" name="username" required>
+                    <label for="">Password<span>*</span></label>
+                    <input type="password" placeholder="Password" value="<?php echo htmlentities($row['password']);?>" name="password" required minlength="8"  data-msg="Password is not less than 8 characters">
+                    <button type="submit" class="aa-browse-btn" name="log">Edit</button>                    
+                  </form>
+                    <?php
 
+
+}
+
+
+?>
+                </div>
+              </div>
+            </div>          
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- / Cart view section -->
+<?php
+                        
+require 'config.php';
+
+if (isset($_POST['log']))
+{
+$clientid=$_SESSION['clientid'];
+$name=$_POST['name'];
+$phone=$_POST['phone'];
+$address=$_POST['address'];
+$username=$_POST['username'];
+$password=$_POST['password'];
+  
+$sql="update client set cname='$name',phoneno='$phone',address='$address',username='$username',password='$password' where clientid='$clientid' ";
+	mysqli_query($con,$sql);
+	echo "<script>alert('Successfully Edit ');</script>";
+    	
+?>
+<script type="text/javascript">
+window.location.href = 'clienthome.php?success';
+</script>
+<?php
+
+
+}
+
+
+?> 
   <!-- footer -->  
   <footer id="aa-footer">
     <!-- footer bottom -->
     <div class="aa-footer-top">
      <div class="container">
-        <div class="row">
-  
-      </div>
+        
      </div>
     </div>
     <!-- footer-bottom -->
@@ -247,9 +297,10 @@
       </div>
     </div>
   </footer>
+  <!-- / footer -->
   <?php	
 require 'config.php';
-if (isset($_POST['log']))
+if (isset($_POST['login']))
 {
 $userkind=$_POST['userkind'];
 $user=$_POST['username'];
@@ -273,11 +324,10 @@ window.location.href = 'adminhome.php?success';
  }
  else
  {
- echo "<script>alert('username or password false');</script>";
+ echo "<script>alert('اسم المستخدم او كلمة المرور خطأ');</script>";
  }
 
 }
-    
 if ($userkind=="1"){
  $sql="SELECT * FROM profamily where username='$user' AND password='$pass' ";
  $result=mysqli_query($con,$sql);
@@ -290,14 +340,14 @@ if ($userkind=="1"){
      
      ?>
 <script type="text/javascript">
-window.location.href = 'profamilyhome.php?success';
+window.location.href = 'profhome.php?success';
 </script>
 <?php
  
  }
  else
  {
- echo "<script>alert('username or password false');</script>";
+ echo "<script>alert('اسم المستخدم او كلمة المرور خطأ');</script>";
  }
 
 }
@@ -320,7 +370,7 @@ window.location.href = 'clienthome.php?success';
  }
  else
  {
-echo "<script>alert('username or password false');</script>";
+echo "<script>alert('اسم المستخدم او كلمة المرور خطأ');</script>";
  }
 
 }
@@ -344,7 +394,7 @@ window.location.href = 'agenthome.php?success';
  }
  else
  {
-echo "<script>alert('username or password false');</script>";
+echo "<script>alert('اسم المستخدم او كلمة المرور خطأ');</script>";
  }
 
 } 
@@ -369,18 +419,17 @@ echo "<script>alert('username or password false');</script>";
   padding: 10px;
   width: 100%; " >
                                   <option value="0">user role</option>
-                                  <option value="4">Admin</option>
                                   <option value="1">Productive family</option>
                                   <option value="2">client</option>
                                   <option value="3">Delivery agent</option>
-                                  
+                                  <option value="4">Admin</option>
                                   
                                 </select>
             <label for="">Username or Email address<span>*</span></label>
-            <input type="text" placeholder="Username or email" name="username" required>
+            <input type="text" placeholder="Username or email" name="username">
             <label for="">Password<span>*</span></label>
-            <input type="password" placeholder="Password" name="password" required>
-            <button class="aa-browse-btn" type="submit" name="log">Login</button>
+            <input type="password" placeholder="Password" name="password">
+            <button class="aa-browse-btn" type="submit" name="login">Login</button>
             
             <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
             <div class="aa-register-now">
@@ -392,6 +441,8 @@ echo "<script>alert('username or password false');</script>";
     </div><!-- /.modal-dialog -->
   </div>    
 
+
+    
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->

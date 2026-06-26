@@ -1,10 +1,14 @@
+<?php
+session_start();
+$clientid=$_SESSION['clientid'];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Productive Families |About</title>
+    <title>Productive Family | Request Details</title>
     
     <!-- Font awesome -->
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -37,20 +41,20 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+  
 
   </head>
-  <body>
-  
-   <!-- wpf loader Two -->
+  <body>  
+    <!-- wpf loader Two -->
     <div id="wpf-loader-two">          
       <div class="wpf-loader-two-inner">
         <span>Loading</span>
       </div>
     </div> 
     <!-- / wpf loader Two -->       
- <!-- SCROLL TOP BUTTON -->
+    <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
-  <!-- END SCROLL TOP BUTTON -->
+    <!-- END SCROLL TOP BUTTON -->
 
 
   <!-- Start header section -->
@@ -77,8 +81,10 @@
               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
+                  <li><a href="clienthome.php">My Account</a></li>
+                  <li class="hidden-xs"><a href="clientcart.php">My Cart</a></li>
                   
-                  <strong><li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li></strong>
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
                 </ul>
               </div>
             </div>
@@ -112,7 +118,8 @@
                   <span class="aa-cart-title"></span>
                   <span class="aa-cart-notify"></span>
                 </a>
-            
+               
+           
               </div>
               <!-- / cart box -->
               <!-- search box -->
@@ -142,7 +149,7 @@
           </div>
           <div class="navbar-collapse collapse">
             <!-- Left nav -->
-            <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
               <li><a href="index.php">Home</a></li>
               <li><a href="#">Account <span class="caret"></span></a>
                 <ul class="dropdown-menu"> 
@@ -181,39 +188,145 @@
  
   <!-- catg header banner section -->
   <section id="aa-catg-head-banner">
-    <img src="img/fashion/1.jpg" alt="fashion img">
-    <div class="aa-catg-head-banner-area">
+   <img src="img/fashion/1.jpg" alt="fashion img">
+   <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
-       <h2>About Us</h2>
+        <h2>Request 
+          details</h2>
         <ol class="breadcrumb">
-          <li><a href="index.php">Home</a></li>                   
-          <li class="active">Account</li>
+          <li><a href="index.html">Home</a></li>         
+          <li><a href="clienthome.php">Account</a></li>
+          
         </ol>
       </div>
      </div>
    </div>
-  </section> 
- 
-  <!-- catg header banner section -->
-    <!-- / catg header banner section -->
-<!-- start contact section -->
- <section id="aa-contact">
-   <div class="container">
-     <div class="row">
-       <div class="col-md-12">
-         <div class="aa-contact-area">
-           <div class="aa-contact-top">
-             <h2>Productive Families</h2>
-             <p>.</p>
-           </div>
-           <!-- contact map -->
-           <div class="aa-contact-map">
-              <p>
-               </p>
-           </div>
-           <!-- Contact address -->
+  </section>
+  <!-- / catg header banner section -->
+
+  <!-- product category -->
+  <section id="aa-product-details">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-product-details-area">
+            <div class="aa-product-details-content">
+              <div class="row">
+                <!-- Modal view slider -->
+                 <?php 
+                    
+require 'config.php';
+$clientid=$_SESSION['clientid'] ;
+    $productno=$_GET['productno'];
+   $result1 = mysqli_query($con,"SELECT * FROM product where productno='$productno' ")
+or die(mysqli_error());
+while($row = mysqli_fetch_array( $result1 )) { 
+?> 
+                <div class="col-md-5 col-sm-5 col-xs-12">                              
+                  <div class="aa-product-view-slider">                                
+                    <div id="demo-1" class="simpleLens-gallery-container">
+                      <div class="simpleLens-container">
+                        <div class="simpleLens-big-image-container"><a data-lens-image="<?php echo htmlentities($row['image']);?>" class="simpleLens-lens-image"><img src="<?php echo htmlentities($row['image']);?>" class="simpleLens-big-image"></a></div>
+                      </div>
+                     <?php 
+                                             }
+                  ?>
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal view content -->
+               <?php 
+                    
+require 'config.php';
+$clientid=$_SESSION['clientid'] ;
+$demandno=$_GET['demandno'];
+$result = mysqli_query($con,"SELECT * FROM demand where demandno='$demandno' ")
+or die(mysqli_error());
+while($row = mysqli_fetch_array( $result )) {
+// echo out the contents of each row into a table
+    $productno=$row['productno'];
+    ?>
+                <div class="col-md-7 col-sm-7 col-xs-12">
+                  <div class="aa-product-view-content">
+                    <h3>Request No : <?php echo htmlentities($row['demandno']);?></h3>
+                      <h3>Product Name : <?php echo htmlentities($row['productname']);?></h3>
+                      <form method="post" action="sendshipping.php" enctype="multipart/form-data">
+                    <div class="aa-price-block">
+                      <span class="aa-product-view-price">Price </span>
+                      <p class="aa-product-avilability"><?php echo htmlentities($row['price']);?><span></span></p>
+                    </div>
+                    
+                    <h4>Units : <?php echo htmlentities($row['unitsno']);?></h4>
+                    <div class="aa-prod-view-size">
+                     
+                    </div>
+                    <div class="aa-prod-quantity">              
+                      <p class="aa-prod-category">
+                        Total: <a href="#"><?php echo htmlentities($row['total']);?></a>
+                      </p>
+                    
+                        <p class="aa-prod-category">
+                        Status: <a href="#"><?php echo htmlentities($row['status']);?></a>
+                      </p>
+                        <p class="aa-prod-category">
+                        Date: <a href="#"><?php echo htmlentities($row['ddate']);?></a>
+                      </p>
+                    </div>
+                   
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <?php 
+}?>
+            <div class="aa-product-details-bottom">
+              <ul class="nav nav-tabs" id="myTab2">
+                <li><a href="#description" data-toggle="tab">Shipping Address</a></li>
+                               
+              </ul>
+               <?php 
+                    
+require 'config.php';
+$clientid=$_SESSION['clientid'] ;
+$result = mysqli_query($con,"SELECT * FROM client where clientid='$clientid' ")
+or die(mysqli_error());
+while($row = mysqli_fetch_array( $result )) {
+// echo out the contents of each row into a table
+    
+    ?>  
+                 <ul class="nav nav-tabs" id="myTab2">
+                <li><a href="#description" data-toggle="tab"> Client Name :<?php echo htmlentities($row['cname']);?></a></li>
+                  <li><a href="#description" data-toggle="tab">Phone no :<?php echo htmlentities($row['phoneno']);?></a></li>             
+              </ul>
+<?php 
+}?>
+     
+              <!-- Tab panes -->
+              <?php 
+                    
+require 'config.php';
+$clientid=$_SESSION['clientid'] ;
+$result = mysqli_query($con,"SELECT * FROM clientaddress where clientid='$clientid' ")
+or die(mysqli_error());
+while($row = mysqli_fetch_array( $result )) {
+// echo out the contents of each row into a table
+    
+    ?>  
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="description">
+                    <p>City : <?php echo htmlentities($row['city']);?><span> Street : <?php echo htmlentities($row['street']);?></span>  </p>
+                  <iframe src="<?php echo htmlentities($row['location']);?>" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                         
+              </div>
+                <?php 
+}?>
+            </div>
+            <!-- Related product -->
            
+
   <!-- Subscribe section -->
  
   <!-- / Subscribe section -->
@@ -224,7 +337,7 @@
     <div class="aa-footer-top">
      <div class="container">
         <div class="row">
-  
+        
       </div>
      </div>
     </div>
@@ -247,112 +360,8 @@
       </div>
     </div>
   </footer>
-  <?php	
-require 'config.php';
-if (isset($_POST['log']))
-{
-$userkind=$_POST['userkind'];
-$user=$_POST['username'];
-$pass=$_POST['password'];
-if ($userkind=="4"){
- $sql="SELECT * FROM admin where username='$user' AND password='$pass' ";
- $result=mysqli_query($con,$sql);
- $numrows=mysqli_num_rows($result);
- if ($numrows == 1 )
- {
-  $row=mysqli_fetch_assoc($result);
-  $adno=$row['adno'];
-    
-  $_SESSION['adno'] =$adno;
-     ?>
-<script type="text/javascript">
-window.location.href = 'adminhome.php?success';
-</script>
-<?php
+  <!-- / footer -->
  
- }
- else
- {
- echo "<script>alert('username or password false');</script>";
- }
-
-}
-    
-if ($userkind=="1"){
- $sql="SELECT * FROM profamily where username='$user' AND password='$pass' ";
- $result=mysqli_query($con,$sql);
- $numrows=mysqli_num_rows($result);
- if ($numrows == 1 )
- {
-  $row=mysqli_fetch_assoc($result);
-  $proid=$row['proid'];
-  $_SESSION['proid'] =$proid;
-     
-     ?>
-<script type="text/javascript">
-window.location.href = 'profamilyhome.php?success';
-</script>
-<?php
- 
- }
- else
- {
- echo "<script>alert('username or password false');</script>";
- }
-
-}
- if ($userkind=="2") {
- $sql1="SELECT * from client where username='$user' AND password='$pass' ";
- $result1=mysqli_query($con,$sql1);
- $numrows=mysqli_num_rows($result1);
- if ($numrows == 1 )
- {
-  $row=mysqli_fetch_assoc($result1);
- $clientid=$row['clientid'];        
- $_SESSION['clientid'] =$clientid;
-  ?>
-<script type="text/javascript">
-window.location.href = 'clienthome.php?success';
-</script>
-<?php
-
-  
- }
- else
- {
-echo "<script>alert('username or password false');</script>";
- }
-
-}
-
-if ($userkind=="3") {
- $sql1="SELECT * from deliveryagent where username='$user' AND password='$pass' ";
- $result1=mysqli_query($con,$sql1);
- $numrows=mysqli_num_rows($result1);
- if ($numrows == 1 )
- {
-  $row=mysqli_fetch_assoc($result1);
- $agentid=$row['agentid'];        
- $_SESSION['agentid'] =$agentid;
-  ?>
-<script type="text/javascript">
-window.location.href = 'agenthome.php?success';
-</script>
-<?php
-
-  
- }
- else
- {
-echo "<script>alert('username or password false');</script>";
- }
-
-} 
-
-}
-
-
-?>
   <!-- Login Modal -->  
   <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -392,6 +401,7 @@ echo "<script>alert('username or password false');</script>";
     </div><!-- /.modal-dialog -->
   </div>    
 
+    
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -412,7 +422,6 @@ echo "<script>alert('username or password false');</script>";
   <script type="text/javascript" src="js/nouislider.js"></script>
   <!-- Custom js -->
   <script src="js/custom.js"></script> 
-  
 
   </body>
 </html>

@@ -1,10 +1,13 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Productive Families |About</title>
+    <title>Productive Families | Refuse reason</title>
     
     <!-- Font awesome -->
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -78,7 +81,7 @@
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
                   
-                  <strong><li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li></strong>
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
                 </ul>
               </div>
             </div>
@@ -99,7 +102,7 @@
                 <!-- Text based logo -->
                 <a href="index.html">
                   <span class="fa fa-shopping-cart"></span>
-                  <p>Prodcutive <strong>families</strong> <span>at your service</span></p>
+                  <p>Prodcutive <strong>Families</strong> <span>at your service</span></p>
                 </a>
                 <!-- img based logo -->
                 <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
@@ -112,7 +115,7 @@
                   <span class="aa-cart-title"></span>
                   <span class="aa-cart-notify"></span>
                 </a>
-            
+               
               </div>
               <!-- / cart box -->
               <!-- search box -->
@@ -185,47 +188,110 @@
     <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
-       <h2>About Us</h2>
+        <h2>Refuse Reason</h2>
         <ol class="breadcrumb">
           <li><a href="index.php">Home</a></li>                   
-          <li class="active">Account</li>
+            <li class="active">  <a href="profamilyhome.php">Account</a></li>
         </ol>
       </div>
      </div>
    </div>
-  </section> 
- 
-  <!-- catg header banner section -->
-    <!-- / catg header banner section -->
-<!-- start contact section -->
- <section id="aa-contact">
+  </section>
+  <!-- / catg header banner section -->
+
+ <!-- Cart view section -->
+ <section id="aa-myaccount">
    <div class="container">
      <div class="row">
        <div class="col-md-12">
-         <div class="aa-contact-area">
-           <div class="aa-contact-top">
-             <h2>Productive Families</h2>
-             <p>.</p>
-           </div>
-           <!-- contact map -->
-           <div class="aa-contact-map">
-              <p>
-               </p>
-           </div>
-           <!-- Contact address -->
-           
-  <!-- Subscribe section -->
- 
-  <!-- / Subscribe section -->
+        <div class="aa-myaccount-area">         
+            <div class="row">
+              <div class="col-md-6">
+                <div class="aa-myaccount-login">
+                <h4>Add Reason</h4>
+                              <form action=""  method="post" class="aa-login-form">
+                    <?php 
+                    
+require 'config.php';
+$proid=$_SESSION['proid'] ;
+$demandno=$_GET['demandno'];
+$result = mysqli_query($con,"SELECT * FROM demand where demandno='$demandno' ")
+or die(mysqli_error());
+// display data in table
+while($row = mysqli_fetch_array( $result )) {
+// echo out the contents of each row into a table
+?>                     
+                    <label for="">Demand No<span>*</span></label>
+                    <input type="text" placeholder="Demand No" value="<?php echo htmlentities($row['demandno']);?>" name="dno">
+                     <label for="">Profamily No<span>*</span></label>
+                    <input type="text" placeholder="Profamily No" value="<?php $proid=$_SESSION['proid']; echo $proid; ?>" name="proid" required >
+                     
+                                  <br>
+                          <label for="">Reason<span>*</span></label>         
+                    <div class="form-group">                        
+                      <textarea class="form-control" rows="5" name="reason" placeholder="Reason" required></textarea>
+                    </div>
+                                  <label for="">client No<span>*</span></label>
+                    <input type="text" placeholder="properties" value="<?php echo htmlentities($row['clientid']);?>" name="clientid">
+                                   <?php
+}
+                       
+?> 
+                    <button type="submit" name="add" class="aa-browse-btn">Add</button>                    
+                  </form>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="aa-myaccount-register"> 
+                    <br>
+                 <img src="img/01.jpg" width="500" height="500"  >
+                </div>
+              </div>
+            </div>          
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- / Cart view section -->
+<?php
+                        
+require 'config.php';
 
+if (isset($_POST['add']))
+{
+$proid=$_POST['proid'];
+$dno=$_POST['dno'];
+$reason=$_POST['reason'];
+$clientid=$_POST['clientid'] ;
+$sql="INSERT INTO refuse (clientid,demandno,proid,reason) VALUES 
+    ('$clientid','$dno','$proid','$reason')";
+	mysqli_query($con,$sql);
+	
+  $accept="refuse";
+    
+		$sql1= "update demand set accept='$accept' WHERE demandno='$demandno'";
+            
+            
+		mysqli_query($con,$sql1);  
+    echo "<script>alert('Successfully Refuse and Send Reason ');</script>";
+?>
+<script type="text/javascript">
+window.location.href = 'profamilyhome.php?success';
+</script>
+<?php
+
+
+}
+
+
+?> 
   <!-- footer -->  
   <footer id="aa-footer">
     <!-- footer bottom -->
     <div class="aa-footer-top">
      <div class="container">
-        <div class="row">
-  
-      </div>
+        
      </div>
     </div>
     <!-- footer-bottom -->
@@ -247,6 +313,7 @@
       </div>
     </div>
   </footer>
+  <!-- / footer -->
   <?php	
 require 'config.php';
 if (isset($_POST['log']))
@@ -392,6 +459,8 @@ echo "<script>alert('username or password false');</script>";
     </div><!-- /.modal-dialog -->
   </div>    
 
+
+    
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->

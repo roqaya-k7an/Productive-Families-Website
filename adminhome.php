@@ -1,0 +1,750 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <title>Productive Families |Admin Page</title>
+    
+    <!-- Font awesome -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">   
+    <!-- SmartMenus jQuery Bootstrap Addon CSS -->
+    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <!-- Product view slider -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">    
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
+    <!-- Theme color -->
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Top Slider CSS -->
+    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+
+    <!-- Main style sheet -->
+    <link href="css/style.css" rel="stylesheet">    
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+  
+   <!-- wpf loader Two -->
+    <div id="wpf-loader-two">          
+      <div class="wpf-loader-two-inner">
+        <span>Loading</span>
+      </div>
+    </div> 
+    <!-- / wpf loader Two -->       
+ <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+
+
+  <!-- Start header section -->
+  <header id="aa-header">
+    <!-- start header top  -->
+    <div class="aa-header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aa-header-top-area">
+              <!-- start header top left -->
+              <div class="aa-header-top-left">
+                <!-- start language -->
+                
+                <!-- / language -->
+
+                <!-- start currency -->
+                
+                <!-- / currency -->
+                <!-- start cellphone -->
+                
+                <!-- / cellphone -->
+              </div>
+              <!-- / header top left -->
+              <div class="aa-header-top-right">
+                  <ul class="aa-head-top-nav-right">
+                    <li class="hidden-xs"><a href="index.php">Home</a></li>
+                  <li><a href="adminhome.php">My Account</a></li>
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / header top  -->
+
+    <!-- start header bottom  -->
+      <div class="aa-header-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aa-header-bottom-area">
+              <!-- logo  -->
+              <div class="aa-logo">
+                <!-- Text based logo -->
+                <a href="index.html">
+                  <span class="fa fa-shopping-cart"></span>
+                  <p>Prodcutive <strong>Families</strong> <span>at your service</span></p>
+                </a>
+                <!-- img based logo -->
+                <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
+              </div>
+              <!-- / logo  -->
+               <!-- cart box -->
+              <div class="aa-cartbox">
+                <a class="aa-cart-link" href="#">
+                  <span class="fa fa-shopping-basket"></span>
+                  <span class="aa-cart-title"></span>
+                  <span class="aa-cart-notify"></span>
+                </a>
+                
+              </div>
+              <!-- / cart box -->
+              <!-- search box -->
+              
+              <!-- / search box -->             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / header bottom  -->
+  </header>
+  <!-- / header section -->
+  <!-- menu -->
+  <section id="menu">
+    <div class="container">
+      <div class="menu-area">
+        <!-- Navbar -->
+        <div class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>          
+          </div>
+          <div class="navbar-collapse collapse">
+            <!-- Left nav -->
+            <ul class="nav navbar-nav">
+              <li><a href="index.php">Home</a></li>
+              <li><a href="#">Account <span class="caret"></span></a>
+                <ul class="dropdown-menu">                
+                   <li><a href="accountadmin.php">Admin</a></li>
+                    <li><a href="accountpro.php">Productive family</a></li>
+                  <li><a href="accountclient.php">client</a></li>
+                  <li><a href="accountagent.php">Delivery Agent</a></li>
+                                                                                                          
+                  
+                </ul>
+              </li>
+              <li><a href="profamily.php">Productive families </a>
+                
+              </li>
+                    
+              <li><a href="#">Category <span class="caret"></span></a>
+                <ul class="dropdown-menu">                
+                   <li><a href="food.php">Food</a></li>
+                  <li><a href="health.php">Health and Beauty</a></li>                
+                  <li><a href="Accessories.php">Accessories</a></li>  
+                    <li><a href="handicrafts.php">Handicrafts</a></li> 
+                     <li><a href="clothes.php">Clothes</a></li>
+                </ul>
+              </li>
+                 <li><a href="about.php">About us</a></li>
+                <li><a href="contact.php">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>       
+    </div>
+  </section>
+  <!-- / menu -->  
+ 
+  <!-- catg header banner section -->
+  
+  <!-- / catg header banner section -->
+
+ <!-- Cart view section -->
+ <section id="checkout">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+        <div class="checkout-area">
+          <form action="">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="checkout-left">
+                  <div class="panel-group" id="accordion">
+                    <!-- Coupon section -->
+                    
+                    <!-- Login section -->
+                    <div class="panel panel-default aa-checkout-login">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            Products 
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <div class="cart-view-area">
+                            <div class="cart-view-table aa-wishlist-table">
+             <form action="">
+               <div class="table-responsive">
+                   
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Profamily</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                       <?php 
+                    
+require 'config.php';
+                   
+$result = mysqli_query($con,"SELECT * FROM product ")
+or die(mysqli_error());
+// display data in table
+while($row = mysqli_fetch_array( $result )) {
+// echo out the contents of each row into a table
+?>
+                    <tbody>
+                      <tr>
+                        
+                        <td><a class="aa-cart-title" href="#"><?php echo htmlentities($row['productno']);?></a></td>
+                        <td><?php echo htmlentities($row['productname']);?></td>
+                        <td> <?php echo htmlentities($row['price']);?></td>
+                         <td><a href="#"><img src="<?php echo htmlentities($row['image']);?>" width="50"  height="50" alt="img"></a></td>
+                          <td><?php echo htmlentities($row['proid']);?></td>
+                          <td><a class="remove" onclick='javascript:confirmationDelete($(this));return false;' href="delproductadmin.php?productno=<?php echo htmlentities($row['productno']);?>"><fa class="fa fa-close"></fa></a></td>
+                       <script>
+function confirmationDelete(anchor)
+{
+   var conf = confirm('Are you sure to delete Product');
+   if(conf)
+      window.location=anchor.attr("href");
+}
+</script>
+                          
+                      </tr>
+                      
+                      <?php
+}
+                       
+?>
+                              
+                      </tbody>
+                      
+                      
+                  </table>
+                  <a href="Addproductadmin.php" class="aa-browse-btn" > Modify Products </a>
+                   
+                </div>
+             </form>             
+           </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                      
+                      
+                      
+                      
+                      
+                      
+                          <div class="panel panel-default aa-checkout-billaddress">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseone">
+                            Supervisors
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapseone" class="panel-collapse collapse">
+                        <div class="panel-body">
+                       <div class="cart-view-area">
+                            <div class="cart-view-table aa-wishlist-table">
+             <form action="">
+               <div class="table-responsive">
+                   
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        
+                        <th>No</th>
+                        <th>Name</th>
+                        
+                        <th>phone no</th>
+                        
+                        <th></th>
+                      </tr>
+                    </thead>
+                      
+                    <tbody>
+                      <tr>
+                        <?php 
+                    
+require 'config.php';
+                   
+$result = mysqli_query($con,"SELECT * FROM admin ")
+or die(mysqli_error());
+// display data in table
+while($row = mysqli_fetch_array( $result )) {
+// echo out the contents of each row into a table
+?>
+                        <td><a class="aa-cart-title" href="#"><?php echo htmlentities($row['adno']);?></a></td>
+                        <td><?php echo htmlentities($row['adname']);?></td>
+                        
+                          <td><?php echo htmlentities($row['phoneno']);?></td>
+                         
+                          
+                          
+                      </tr>
+                      <?php
+}
+                       
+?>
+                              
+                      </tbody>
+            
+                                         
+                      
+                      
+                      
+                  </table>
+                   
+                   
+                </div>
+             </form>             
+           </div>
+                            </div>                                    
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Billing Details -->
+                    
+                      
+                          <div class="panel panel-default aa-checkout-billaddress">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                            Productive Family
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                       <div class="cart-view-area">
+                            <div class="cart-view-table aa-wishlist-table">
+             <form action="">
+               <div class="table-responsive">
+                   
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        
+                        <th>No</th>
+                        <th>familyName</th>
+                        <th>city</th>
+                        <th>Sex</th>
+                        <th>phone no</th>
+                        <th>Summary</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                      
+                    <tbody>
+                      <tr>
+                        <?php 
+                    
+require 'config.php';
+                   
+$result = mysqli_query($con,"SELECT * FROM profamily ")
+or die(mysqli_error());
+// display data in table
+while($row = mysqli_fetch_array( $result )) {
+// echo out the contents of each row into a table
+?>
+                        <td><a class="aa-cart-title" href="#"><?php echo htmlentities($row['proid']);?></a></td>
+                        <td><?php echo htmlentities($row['proname']);?></td>
+                        <td><?php echo htmlentities($row['city']);?> </td>
+                          <td><?php echo htmlentities($row['kind']);?> </td>
+                          <td><?php echo htmlentities($row['phoneno']);?></td>
+                         <td><a href="#"><?php echo htmlentities($row['summary']);?></a></td>
+                          <td><a class="remove" onclick='javascript:confirmationDelete($(this));return false;' href="delprofamily.php?proid=<?php echo htmlentities($row['proid']);?>"><fa class="fa fa-close"></fa></a></td>
+                       <script>
+function confirmationDelete(anchor)
+{
+   var conf = confirm('Are you sure to delete Family');
+   if(conf)
+      window.location=anchor.attr("href");
+}
+</script>
+                          
+                      </tr>
+                      <?php
+}
+                       
+?>
+                              
+                      </tbody>
+            
+                                         
+                      
+                      
+                      
+                  </table>
+                   
+                   
+                </div>
+             </form>             
+           </div>
+                            </div>                                    
+                        </div>
+                      </div>
+                    </div>
+                      
+                      
+                      <div class="panel panel-default aa-checkout-billaddress">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapsefour">
+                            Client
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapsefour" class="panel-collapse collapse">
+                        <div class="panel-body">
+                       <div class="cart-view-area">
+                            <div class="cart-view-table aa-wishlist-table">
+             <form action="">
+               <div class="table-responsive">
+                   
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        
+                        <th>No</th>
+                        <th>Name</th>
+                       
+                        <th>phone no</th>
+                        <th>Address</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                      
+                    <tbody>
+                      <tr>
+                        <?php 
+                    
+require 'config.php';
+                   
+$result = mysqli_query($con,"SELECT * FROM client ")
+or die(mysqli_error());
+// display data in table
+while($row = mysqli_fetch_array( $result )) {
+// echo out the contents of each row into a table
+?>
+                        <td><a class="aa-cart-title" href="#"><?php echo htmlentities($row['clientid']);?></a></td>
+                        <td><?php echo htmlentities($row['cname']);?></td>
+                          <td><?php echo htmlentities($row['phoneno']);?></td>
+                         <td><a href="#"><?php echo htmlentities($row['address']);?></a></td>
+                          <td><a class="remove" onclick='javascript:confirmationDelete($(this));return false;' href="delclient.php?clientid=<?php echo htmlentities($row['clientid']);?>"><fa class="fa fa-close"></fa></a></td>
+                       <script>
+function confirmationDelete(anchor)
+{
+   var conf = confirm('Are you sure to delete Client');
+   if(conf)
+      window.location=anchor.attr("href");
+}
+</script>
+                          
+                      </tr>
+                      <?php
+}
+                       
+?>
+                              
+                      </tbody>
+            
+                                         
+                      
+                      
+                      
+                  </table>
+                   
+                   
+                </div>
+             </form>             
+           </div>
+                            </div>                                    
+                        </div>
+                      </div>
+                    </div>
+                      
+                      
+                      
+                      
+                      
+                          <div class="panel panel-default aa-checkout-billaddress">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapsefive">
+                            Delivery Agent
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapsefive" class="panel-collapse collapse">
+                        <div class="panel-body">
+                       <div class="cart-view-area">
+                            <div class="cart-view-table aa-wishlist-table">
+             <form action="">
+               <div class="table-responsive">
+                   
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>city</th>
+                        <th>Sex</th>
+                        <th>phone no</th>
+                        <th>Nationality</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                      
+                    <tbody>
+                      <tr>
+                        <?php 
+                    
+require 'config.php';
+                   
+$result = mysqli_query($con,"SELECT * FROM deliveryagent ")
+or die(mysqli_error());
+// display data in table
+while($row = mysqli_fetch_array( $result )) {
+// echo out the contents of each row into a table
+?>
+                        <td><a class="aa-cart-title" href="#"><?php echo htmlentities($row['agentid']);?></a></td>
+                        <td><?php echo htmlentities($row['agentname']);?></td>
+                        <td><?php echo htmlentities($row['city']);?> </td>
+                          <td><?php echo htmlentities($row['kind']);?> </td>
+                          <td><?php echo htmlentities($row['phoneno']);?></td>
+                         <td><a href="#"><?php echo htmlentities($row['nationality']);?></a></td>
+                          <td><a class="remove" onclick='javascript:confirmationDelete($(this));return false;' href="delagent.php?agentid=<?php echo htmlentities($row['agentid']);?>"><fa class="fa fa-close"></fa></a></td>
+                       <script>
+function confirmationDelete(anchor)
+{
+   var conf = confirm('Are you sure to delete Family');
+   if(conf)
+      window.location=anchor.attr("href");
+}
+</script>
+                          
+                      </tr>
+                      <?php
+}
+                       
+?>
+                              
+                      </tbody>
+            
+                                         
+                      
+                      
+                      
+                  </table>
+                   
+                   
+                </div>
+             </form>             
+           </div>
+                            </div>                                    
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Shipping Address -->
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="checkout-right">
+                  <h4>Personal Information </h4>
+                  <div class="aa-order-summary-area">
+                       <table class="table table-responsive">
+                        
+            <?php
+                        
+         
+require 'config.php';
+$adno=$_SESSION['adno'];                       
+$result = mysqli_query($con,"SELECT * FROM admin where adno= '$adno' ")
+or die(mysqli_error());
+// display data in table
+while($row = mysqli_fetch_array( $result )) {
+// echo out the contents of each row into a table
+
+?>
+                      <thead>
+                        <tr>
+                          <th><?php echo '<span class="color">' . $row['adno'] . '</span>'; ?></th>
+                          <th>Number</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td> <strong><?php echo '<span class="color">' . $row['adname'] . '</span>'; ?>  </strong></td>
+                          <td>Name </td>
+                        </tr>
+                        <tr>
+                          <td> <strong> <?php echo '<span class="color">' . $row['phoneno'] . '</span>'; ?></strong></td>
+                          <td>Phone no</td>
+                        </tr>
+                       
+                      </tbody>
+                        
+                      <tfoot>
+                        <tr>
+                          <th><?php echo '<span class="color">' . $row['username'] . '</span>'; ?></th>
+                          <td>username</td>
+                        </tr>
+                         <tr>
+                          <th><?php echo '<span class="color">' . $row['password'] . '</span>'; ?></th>
+                          <td>Password</td>
+                        </tr>
+                        
+                      </tfoot>
+                    </table>
+                      
+                      <div class="aa-payment-method" > 
+                          <table class="table table-responsive">
+                          <tr align="center"><td>
+                      <a href="editadmindata.php?adno=<?php echo htmlentities($row['adno']);?>" class="aa-browse-btn">Edit Information</a></td>
+                      <td>
+                    <a href="signout.php?adno=<?php echo htmlentities($row['adno']);?>" class="aa-browse-btn">Logout</a></td> </tr></table>
+                  
+                      <?php
+}
+                       
+?>
+                    
+                  
+                </div>
+              </div>
+            </div>
+          
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- / Cart view section -->
+
+  <!-- footer -->  
+  <footer id="aa-footer">
+    <!-- footer bottom -->
+    <div class="aa-footer-top">
+     <div class="container">
+        
+     
+     </div>
+    </div>
+    <!-- footer-bottom -->
+    <div class="aa-footer-bottom">
+      <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+          <div class="aa-footer-bottom-area">
+            <p>Designed by <a href="http://www.markups.io/">MarkUps.io</a></p>
+            <div class="aa-footer-payment">
+              <span class="fa fa-cc-mastercard"></span>
+              <span class="fa fa-cc-visa"></span>
+              <span class="fa fa-paypal"></span>
+              <span class="fa fa-cc-discover"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </footer>
+  <!-- / footer -->
+  <!-- Login Modal -->  
+  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">                      
+        <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4>Login or Register</h4>
+          <form class="aa-login-form" action="">
+            <label for="">Username or Email address<span>*</span></label>
+            <input type="text" placeholder="Username or email">
+            <label for="">Password<span>*</span></label>
+            <input type="password" placeholder="Password">
+            <button class="aa-browse-btn" type="submit">Login</button>
+            <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
+            <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
+            <div class="aa-register-now">
+              Don't have an account?<a href="account.html">Register now!</a>
+            </div>
+          </form>
+        </div>                        
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>  
+    <!-- SmartMenus jQuery plugin -->
+    <script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+    <!-- SmartMenus jQuery Bootstrap Addon -->
+    <script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>  
+    <!-- To Slider JS -->
+    <script src="js/sequence.js"></script>
+    <script src="js/sequence-theme.modern-slide-in.js"></script>  
+    <!-- Product view slider -->
+    <script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
+    <script type="text/javascript" src="js/jquery.simpleLens.js"></script>
+    <!-- slick slider -->
+    <script type="text/javascript" src="js/slick.js"></script>
+    <!-- Price picker slider -->
+    <script type="text/javascript" src="js/nouislider.js"></script>
+    <!-- Custom js -->
+    <script src="js/custom.js"></script> 
+    
+  </body>
+</html>

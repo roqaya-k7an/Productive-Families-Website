@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Productive Families |About</title>
+    <title>Productive Family | Product Detail</title>
     
     <!-- Font awesome -->
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -37,20 +37,20 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+  
 
   </head>
-  <body>
-  
-   <!-- wpf loader Two -->
+  <body>  
+    <!-- wpf loader Two -->
     <div id="wpf-loader-two">          
       <div class="wpf-loader-two-inner">
         <span>Loading</span>
       </div>
     </div> 
     <!-- / wpf loader Two -->       
- <!-- SCROLL TOP BUTTON -->
+    <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
-  <!-- END SCROLL TOP BUTTON -->
+    <!-- END SCROLL TOP BUTTON -->
 
 
   <!-- Start header section -->
@@ -74,11 +74,12 @@
                 
                 <!-- / cellphone -->
               </div>
-              <!-- / header top left -->
+               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  
-                  <strong><li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li></strong>
+                  <li><a href="clienthome.php">My Account</a></li>
+                  <li class="hidden-xs"><a href="clientcart.php">My Cart</a></li>
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
                 </ul>
               </div>
             </div>
@@ -89,7 +90,7 @@
     <!-- / header top  -->
 
     <!-- start header bottom  -->
-      <div class="aa-header-bottom">
+    <div class="aa-header-bottom">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -112,7 +113,7 @@
                   <span class="aa-cart-title"></span>
                   <span class="aa-cart-notify"></span>
                 </a>
-            
+             
               </div>
               <!-- / cart box -->
               <!-- search box -->
@@ -145,14 +146,12 @@
             <ul class="nav navbar-nav">
               <li><a href="index.php">Home</a></li>
               <li><a href="#">Account <span class="caret"></span></a>
-                <ul class="dropdown-menu"> 
-                     <li><a href="accountadmin.php">Admin</a></li>
+                <ul class="dropdown-menu">                
+                   <li><a href="accountadmin.php">Admin</a></li>
                     <li><a href="accountpro.php">Productive family</a></li>
                   <li><a href="accountclient.php">client</a></li>
-                  
                   <li><a href="accountagent.php">Delivery Agent</a></li>
-                                                                 
-                  
+                                                                                                              
                   
                 </ul>
               </li>
@@ -177,43 +176,115 @@
       </div>       
     </div>
   </section>
-  <!-- / menu -->  
+  <!-- / menu -->    
  
   <!-- catg header banner section -->
   <section id="aa-catg-head-banner">
-    <img src="img/fashion/1.jpg" alt="fashion img">
-    <div class="aa-catg-head-banner-area">
+   <img src="img/fashion/1.jpg" alt="fashion img">
+   <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
-       <h2>About Us</h2>
+        <h2>Product 
+          details</h2>
         <ol class="breadcrumb">
-          <li><a href="index.php">Home</a></li>                   
-          <li class="active">Account</li>
+          <li><a href="index.html">Home</a></li>         
+          <li><a href="#">Product</a></li>
+          <li class="active">Food</li>
         </ol>
       </div>
      </div>
    </div>
-  </section> 
- 
-  <!-- catg header banner section -->
-    <!-- / catg header banner section -->
-<!-- start contact section -->
- <section id="aa-contact">
-   <div class="container">
-     <div class="row">
-       <div class="col-md-12">
-         <div class="aa-contact-area">
-           <div class="aa-contact-top">
-             <h2>Productive Families</h2>
-             <p>.</p>
-           </div>
-           <!-- contact map -->
-           <div class="aa-contact-map">
-              <p>
-               </p>
-           </div>
-           <!-- Contact address -->
+  </section>
+  <!-- / catg header banner section -->
+
+  <!-- product category -->
+  <section id="aa-product-details">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-product-details-area">
+            <div class="aa-product-details-content">
+              <div class="row">
+                <!-- Modal view slider -->
+                 <?php 
+                    
+require 'config.php';
+$productno=$_GET['productno'];
+ $result1 = mysqli_query($con,"SELECT * FROM product where productno='$productno' ")
+or die(mysqli_error());
+while($row = mysqli_fetch_array( $result1 )) { 
+?> 
+                <div class="col-md-5 col-sm-5 col-xs-12">                              
+                  <div class="aa-product-view-slider">                                
+                    <div id="demo-1" class="simpleLens-gallery-container">
+                      <div class="simpleLens-container">
+                        <div class="simpleLens-big-image-container"><a data-lens-image="<?php echo htmlentities($row['image']);?>" class="simpleLens-lens-image"><img src="<?php echo htmlentities($row['image']);?>" class="simpleLens-big-image"></a></div>
+                      </div>
+                    
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal view content -->
+               
+                <div class="col-md-7 col-sm-7 col-xs-12">
+                  <div class="aa-product-view-content">
+                    
+                    <strong> <h3>Product Name : <?php echo htmlentities($row['productname']);?></h3></strong> 
+                      <p>Product No : <?php echo htmlentities($row['productno']);?></p>
+                    <div class="aa-price-block">
+                    <strong>  <span class="aa-product-view-price">Price </span>
+                        <p class="aa-product-avilability"><?php echo htmlentities($row['price']);?><span>SR</span></p></strong>
+                    </div>
+                    
+                      <h4>Pre-Set: <a href="#"><?php echo htmlentities($row['preset']);?></a></h4>
+                    <div class="aa-prod-view-size">
+                     
+                    </div>
+                    <div class="aa-prod-quantity">              
+                      
+                        <p class="aa-prod-category">
+                        Productive family no: <a href="#"><?php echo htmlentities($row['proid']);?></a>
+                      </p>
+                        <p class="aa-prod-category">
+                        Category: <a href="#"><?php echo htmlentities($row['catname']);?></a>
+                      </p>
+                        <p class="aa-prod-category">
+                        Properties: <a href="#"><?php echo htmlentities($row['properties']);?></a>
+                      </p>
+                       
+                    </div>
+                    <div class="aa-prod-view-bottom">
+                      <a class="aa-add-to-cart-btn" href="addtocart.php?productno=<?php echo htmlentities($row['productno']);?>">Add To Cart</a>
+                      <a class="aa-add-to-cart-btn" href="index.php">Home Page</a>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="aa-product-details-bottom">
+              <ul class="nav nav-tabs" id="myTab2">
+                <li><a href="#description" data-toggle="tab">Discribe</a></li>
+                               
+              </ul>
+          <!-- Tab panes -->
+              
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="description">
+                  <strong>  <p><?php echo htmlentities($row['discribe']);?></p>
+                    
+                    <p>Properties : <?php echo htmlentities($row['properties']);?> </p>
+                  </strong>
+                </div>
+                         
+              </div>
+                <?php 
+}?>
+            </div>
+            <!-- Related product -->
+            <!-- Related product -->
            
+
   <!-- Subscribe section -->
  
   <!-- / Subscribe section -->
@@ -224,7 +295,7 @@
     <div class="aa-footer-top">
      <div class="container">
         <div class="row">
-  
+        
       </div>
      </div>
     </div>
@@ -247,7 +318,8 @@
       </div>
     </div>
   </footer>
-  <?php	
+  <!-- / footer -->
+ <?php	
 require 'config.php';
 if (isset($_POST['log']))
 {
@@ -392,6 +464,7 @@ echo "<script>alert('username or password false');</script>";
     </div><!-- /.modal-dialog -->
   </div>    
 
+    
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -412,7 +485,6 @@ echo "<script>alert('username or password false');</script>";
   <script type="text/javascript" src="js/nouislider.js"></script>
   <!-- Custom js -->
   <script src="js/custom.js"></script> 
-  
 
   </body>
 </html>

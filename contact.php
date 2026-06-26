@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Productive Families |About</title>
+    <title>Productive Families |contact</title>
     
     <!-- Font awesome -->
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -75,10 +75,12 @@
                 <!-- / cellphone -->
               </div>
               <!-- / header top left -->
+              <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  
-                  <strong><li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li></strong>
+                  <li><a href="clienthome.php">My Account</a></li>
+                  <li class="hidden-xs"><a href="clientcart.php">My Cart</a></li>
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
                 </ul>
               </div>
             </div>
@@ -89,7 +91,7 @@
     <!-- / header top  -->
 
     <!-- start header bottom  -->
-      <div class="aa-header-bottom">
+    <div class="aa-header-bottom">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -112,7 +114,7 @@
                   <span class="aa-cart-title"></span>
                   <span class="aa-cart-notify"></span>
                 </a>
-            
+             
               </div>
               <!-- / cart box -->
               <!-- search box -->
@@ -145,14 +147,12 @@
             <ul class="nav navbar-nav">
               <li><a href="index.php">Home</a></li>
               <li><a href="#">Account <span class="caret"></span></a>
-                <ul class="dropdown-menu"> 
-                     <li><a href="accountadmin.php">Admin</a></li>
+                <ul class="dropdown-menu">                
+                   <li><a href="accountadmin.php">Admin</a></li>
                     <li><a href="accountpro.php">Productive family</a></li>
                   <li><a href="accountclient.php">client</a></li>
-                  
                   <li><a href="accountagent.php">Delivery Agent</a></li>
-                                                                 
-                  
+                                                                                                              
                   
                 </ul>
               </li>
@@ -177,7 +177,7 @@
       </div>       
     </div>
   </section>
-  <!-- / menu -->  
+  <!-- / menu -->   
  
   <!-- catg header banner section -->
   <section id="aa-catg-head-banner">
@@ -185,7 +185,7 @@
     <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
-       <h2>About Us</h2>
+       <h2>Contact</h2>
         <ol class="breadcrumb">
           <li><a href="index.php">Home</a></li>                   
           <li class="active">Account</li>
@@ -204,16 +204,70 @@
        <div class="col-md-12">
          <div class="aa-contact-area">
            <div class="aa-contact-top">
-             <h2>Productive Families</h2>
+             <h2>We are wating to assist you..</h2>
              <p>.</p>
            </div>
            <!-- contact map -->
            <div class="aa-contact-map">
-              <p>
-               </p>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3422.951449660914!2d41.07711671406348!3d30.915981183831057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x156c11cace438435%3A0x6b51726bafb051b8!2sNorthern%20Border%20University!5e0!3m2!1sen!2ssa!4v1616789521798!5m2!1sen!2ssa" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
            </div>
            <!-- Contact address -->
-           
+           <div class="aa-contact-address">
+             <div class="row">
+               <div class="col-md-8">
+                 <div class="aa-contact-address-left">
+                   <form class="comments-form contact-form" action="">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">                        
+                          <input type="text" placeholder="Your Name" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">                        
+                          <input type="email" placeholder="Email" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                     <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">                        
+                          <input type="text" placeholder="Subject" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">                        
+                          <input type="text" placeholder="Company" class="form-control">
+                        </div>
+                      </div>
+                    </div>                  
+                     
+                    <div class="form-group">                        
+                      <textarea class="form-control" rows="3" placeholder="Message"></textarea>
+                    </div>
+                    <button class="aa-secondary-btn">Send</button>
+                  </form>
+                 </div>
+               </div>
+               <div class="col-md-4">
+                 <div class="aa-contact-address-right">
+                   <address>
+                     <h4>Productive Families</h4>
+                     <p></p>
+                     <p><span class="fa fa-home"></span></p>
+                     <p><span class="fa fa-phone"></span>+ 966567890654</p>
+                     <p><span class="fa fa-envelope"></span>Email: support@agmail.com</p>
+                   </address>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+
   <!-- Subscribe section -->
  
   <!-- / Subscribe section -->
@@ -247,7 +301,8 @@
       </div>
     </div>
   </footer>
-  <?php	
+   <!-- / footer -->
+<?php	
 require 'config.php';
 if (isset($_POST['log']))
 {
@@ -391,6 +446,7 @@ echo "<script>alert('username or password false');</script>";
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div>    
+  
 
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
